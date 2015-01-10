@@ -9,7 +9,7 @@ Sign users up (/newuser)
 
 POST Request:
 ```
-userData = {
+{
    "username" : username_var,
    "email" : email_var,
    "password" : password_var
