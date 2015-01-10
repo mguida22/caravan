@@ -1,0 +1,420 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B52C71291A61B1280018A3F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C71281A61B1280018A3F8 /* AppDelegate.swift */; };
+		B52C712B1A61B1280018A3F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C712A1A61B1280018A3F8 /* ViewController.swift */; };
+		B52C712E1A61B1280018A3F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52C712C1A61B1280018A3F8 /* Main.storyboard */; };
+		B52C71301A61B1280018A3F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52C712F1A61B1280018A3F8 /* Images.xcassets */; };
+		B52C71331A61B1280018A3F8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B52C71311A61B1280018A3F8 /* LaunchScreen.xib */; };
+		B52C713F1A61B1280018A3F8 /* CaravanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C713E1A61B1280018A3F8 /* CaravanTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B52C71391A61B1280018A3F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B52C711B1A61B1280018A3F8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B52C71221A61B1280018A3F8;
+			remoteInfo = Caravan;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B52C71231A61B1280018A3F8 /* Caravan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Caravan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B52C71271A61B1280018A3F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B52C71281A61B1280018A3F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B52C712A1A61B1280018A3F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B52C712D1A61B1280018A3F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B52C712F1A61B1280018A3F8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B52C71321A61B1280018A3F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		B52C71381A61B1280018A3F8 /* CaravanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaravanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B52C713D1A61B1280018A3F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B52C713E1A61B1280018A3F8 /* CaravanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaravanTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B52C71201A61B1280018A3F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B52C71351A61B1280018A3F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B52C711A1A61B1280018A3F8 = {
+			isa = PBXGroup;
+			children = (
+				B52C71251A61B1280018A3F8 /* Caravan */,
+				B52C713B1A61B1280018A3F8 /* CaravanTests */,
+				B52C71241A61B1280018A3F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B52C71241A61B1280018A3F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B52C71231A61B1280018A3F8 /* Caravan.app */,
+				B52C71381A61B1280018A3F8 /* CaravanTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B52C71251A61B1280018A3F8 /* Caravan */ = {
+			isa = PBXGroup;
+			children = (
+				B52C71281A61B1280018A3F8 /* AppDelegate.swift */,
+				B52C712A1A61B1280018A3F8 /* ViewController.swift */,
+				B52C712C1A61B1280018A3F8 /* Main.storyboard */,
+				B52C712F1A61B1280018A3F8 /* Images.xcassets */,
+				B52C71311A61B1280018A3F8 /* LaunchScreen.xib */,
+				B52C71261A61B1280018A3F8 /* Supporting Files */,
+			);
+			path = Caravan;
+			sourceTree = "<group>";
+		};
+		B52C71261A61B1280018A3F8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B52C71271A61B1280018A3F8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B52C713B1A61B1280018A3F8 /* CaravanTests */ = {
+			isa = PBXGroup;
+			children = (
+				B52C713E1A61B1280018A3F8 /* CaravanTests.swift */,
+				B52C713C1A61B1280018A3F8 /* Supporting Files */,
+			);
+			path = CaravanTests;
+			sourceTree = "<group>";
+		};
+		B52C713C1A61B1280018A3F8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B52C713D1A61B1280018A3F8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B52C71221A61B1280018A3F8 /* Caravan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B52C71421A61B1280018A3F8 /* Build configuration list for PBXNativeTarget "Caravan" */;
+			buildPhases = (
+				B52C711F1A61B1280018A3F8 /* Sources */,
+				B52C71201A61B1280018A3F8 /* Frameworks */,
+				B52C71211A61B1280018A3F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Caravan;
+			productName = Caravan;
+			productReference = B52C71231A61B1280018A3F8 /* Caravan.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B52C71371A61B1280018A3F8 /* CaravanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B52C71451A61B1280018A3F8 /* Build configuration list for PBXNativeTarget "CaravanTests" */;
+			buildPhases = (
+				B52C71341A61B1280018A3F8 /* Sources */,
+				B52C71351A61B1280018A3F8 /* Frameworks */,
+				B52C71361A61B1280018A3F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B52C713A1A61B1280018A3F8 /* PBXTargetDependency */,
+			);
+			name = CaravanTests;
+			productName = CaravanTests;
+			productReference = B52C71381A61B1280018A3F8 /* CaravanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B52C711B1A61B1280018A3F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Caravan;
+				TargetAttributes = {
+					B52C71221A61B1280018A3F8 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					B52C71371A61B1280018A3F8 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = B52C71221A61B1280018A3F8;
+					};
+				};
+			};
+			buildConfigurationList = B52C711E1A61B1280018A3F8 /* Build configuration list for PBXProject "Caravan" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B52C711A1A61B1280018A3F8;
+			productRefGroup = B52C71241A61B1280018A3F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B52C71221A61B1280018A3F8 /* Caravan */,
+				B52C71371A61B1280018A3F8 /* CaravanTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B52C71211A61B1280018A3F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B52C712E1A61B1280018A3F8 /* Main.storyboard in Resources */,
+				B52C71331A61B1280018A3F8 /* LaunchScreen.xib in Resources */,
+				B52C71301A61B1280018A3F8 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B52C71361A61B1280018A3F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B52C711F1A61B1280018A3F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B52C712B1A61B1280018A3F8 /* ViewController.swift in Sources */,
+				B52C71291A61B1280018A3F8 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B52C71341A61B1280018A3F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B52C713F1A61B1280018A3F8 /* CaravanTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B52C713A1A61B1280018A3F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B52C71221A61B1280018A3F8 /* Caravan */;
+			targetProxy = B52C71391A61B1280018A3F8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B52C712C1A61B1280018A3F8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B52C712D1A61B1280018A3F8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B52C71311A61B1280018A3F8 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B52C71321A61B1280018A3F8 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B52C71401A61B1280018A3F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B52C71411A61B1280018A3F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B52C71431A61B1280018A3F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Caravan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B52C71441A61B1280018A3F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Caravan/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B52C71461A61B1280018A3F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CaravanTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Caravan.app/Caravan";
+			};
+			name = Debug;
+		};
+		B52C71471A61B1280018A3F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CaravanTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Caravan.app/Caravan";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B52C711E1A61B1280018A3F8 /* Build configuration list for PBXProject "Caravan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B52C71401A61B1280018A3F8 /* Debug */,
+				B52C71411A61B1280018A3F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B52C71421A61B1280018A3F8 /* Build configuration list for PBXNativeTarget "Caravan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B52C71431A61B1280018A3F8 /* Debug */,
+				B52C71441A61B1280018A3F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B52C71451A61B1280018A3F8 /* Build configuration list for PBXNativeTarget "CaravanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B52C71461A61B1280018A3F8 /* Debug */,
+				B52C71471A61B1280018A3F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B52C711B1A61B1280018A3F8 /* Project object */;
+}
