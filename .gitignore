@@ -263,3 +263,4 @@ docs/_build/
 
 # PyBuilder
 target/
+*.xccheckout

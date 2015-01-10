@@ -1,15 +1,39 @@
 Caravan Server
 ===
 
+API Layout (How you get things)
+----
+
+Sign users up (/newuser)
+---
+
+POST Request:
+```
+userData = {
+   "username" : username_var,
+   "email" : email_var,
+   "password" : password_var
+}
+```
+Returns:
+```
+{
+"id" : new_user_id (or -1 if error)
+}
+```
+
+
 Table Layout (What you can get)
 ----
 The format is the following
+
 ```sql
 nameOfItem (type:max_length(, decimal length))
 ```
 
 Users 
 ---
+
 
 ```sql
 id (int:11)
