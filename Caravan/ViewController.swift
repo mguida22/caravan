@@ -37,7 +37,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var apiEndpoint = "http://162.243.225.16:8080"
     
     //temp user id, need to add code to change this for new users
-    var tempUserId = 2
+    var tempUserId = 1
     var tempGroupId = 1
     
     //simple bool for testing
@@ -119,6 +119,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         myLineRenderer.strokeColor = UIColor.blueColor()
         myLineRenderer.lineWidth = 3
         return myLineRenderer
+    }
+    
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        
+        
+            let identifier = "stopAnnotation"
+            var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+            if pinView == nil {
+                //println("Pinview was nil")
+                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                pinView!.canShowCallout = true
+                pinView.image = UIImage(named: "dot-orange")
+            }
+            return pinView
+
     }
     
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
