@@ -17,10 +17,13 @@ class SettingsViewController: UIViewController, MKMapViewDelegate, CLLocationMan
     
     override func viewDidLoad() {
         
-        searchBar.barTintColor = UIColor.blackColor()
-        
         super.viewDidLoad()
         
+        if searchBar.searchResultsButtonSelected == true {
+            var userText : String? = searchBar.text
+        }
+        
+         searchBar.barTintColor = UIColor.blackColor()
         // Do any additional setup after loading the view.
 }
 
