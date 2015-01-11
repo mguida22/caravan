@@ -8,7 +8,7 @@ Sign users up (/newuser)
 ---
 
 POST Request:
-```json
+```
 {
    "username" : username_var,
    "email" : email_var,
@@ -16,7 +16,7 @@ POST Request:
 }
 ```
 Returns:
-```json
+```
 {
 "id" : new_user_id (or -1 if error)
 }
@@ -26,11 +26,11 @@ Get user info (/user/{id})
 ---
 
 GET Request:
-```url
+```
 /user/{id}
 ```
 Returns:
-```json
+```
 {
   "active": (1/0),
   "batteryPercentage": (0-100),
