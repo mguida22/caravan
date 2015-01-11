@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -19,17 +20,26 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K8x-S6-PiL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Teh-Fb-2RE">
+                                <rect key="frame" x="535" y="561" width="51" height="31"/>
+                                <connections>
+                                    <action selector="doTracking:" destination="vXZ-lx-hvc" eventType="valueChanged" id="CbB-g5-9LZ"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Teh-Fb-2RE" secondAttribute="bottom" constant="8" symbolic="YES" id="8Cz-c6-TNa"/>
                             <constraint firstItem="K8x-S6-PiL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="GT0-aP-g2Q"/>
                             <constraint firstItem="K8x-S6-PiL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="T9W-6d-eLy"/>
                             <constraint firstItem="K8x-S6-PiL" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="Zxa-uT-u0o"/>
                             <constraint firstAttribute="trailing" secondItem="K8x-S6-PiL" secondAttribute="trailing" id="kBx-5u-F28"/>
+                            <constraint firstItem="Teh-Fb-2RE" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="kvc-ny-Mn7"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="theMap" destination="K8x-S6-PiL" id="bBc-tL-cea"/>
+                        <outlet property="theMap" destination="K8x-S6-PiL" id="6C0-SD-kpD"/>
+                        <outlet property="trackingSwitch" destination="Teh-Fb-2RE" id="xk6-Rt-yF6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
