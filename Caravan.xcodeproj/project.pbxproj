@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		821528C41A61DD5000D74A45 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 821528C31A61DD5000D74A45 /* GoogleMaps.framework */; };
-		821528C61A61DD5C00D74A45 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 821528C51A61DD5C00D74A45 /* GoogleMaps.bundle */; };
+		821528C81A6231F700D74A45 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821528C71A6231F700D74A45 /* SettingsViewController.swift */; };
 		826EEE7E1A61CC6100C0D2F3 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 826EEE781A61CC6100C0D2F3 /* libc++.dylib */; };
 		826EEE7F1A61CC6100C0D2F3 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 826EEE791A61CC6100C0D2F3 /* libicucore.dylib */; };
 		826EEE801A61CC6100C0D2F3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 826EEE7A1A61CC6100C0D2F3 /* libz.dylib */; };
@@ -43,6 +43,7 @@
 /* Begin PBXFileReference section */
 		821528C31A61DD5000D74A45 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "GoogleMaps-iOS-1.9.1/GoogleMaps.framework"; sourceTree = "<group>"; };
 		821528C51A61DD5C00D74A45 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "GoogleMaps-iOS-1.9.1/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
+		821528C71A6231F700D74A45 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		826EEE781A61CC6100C0D2F3 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		826EEE791A61CC6100C0D2F3 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		826EEE7A1A61CC6100C0D2F3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -126,6 +127,7 @@
 		B52C711A1A61B1280018A3F8 = {
 			isa = PBXGroup;
 			children = (
+				821528C71A6231F700D74A45 /* SettingsViewController.swift */,
 				4CFC5ECF1A61F01D00FEB39F /* Resources */,
 				B52C71251A61B1280018A3F8 /* Caravan */,
 				B52C713B1A61B1280018A3F8 /* CaravanTests */,
@@ -263,7 +265,6 @@
 				B52C712E1A61B1280018A3F8 /* Main.storyboard in Resources */,
 				B52C71331A61B1280018A3F8 /* LaunchScreen.xib in Resources */,
 				B52C71301A61B1280018A3F8 /* Images.xcassets in Resources */,
-				821528C61A61DD5C00D74A45 /* GoogleMaps.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +285,7 @@
 				B52C712B1A61B1280018A3F8 /* ViewController.swift in Sources */,
 				B52C71291A61B1280018A3F8 /* AppDelegate.swift in Sources */,
 				826EEE921A61CE8900C0D2F3 /* Cbridge.m in Sources */,
+				821528C81A6231F700D74A45 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

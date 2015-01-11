@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,17 +17,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K8x-S6-PiL">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K8x-S6-PiL">
+                                <rect key="frame" x="158" y="0.0" width="442" height="600"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="394" id="OZA-ZF-mLX"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OZA-ZF-mLX"/>
+                                    </mask>
+                                </variation>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grE-II-fyk">
+                                <rect key="frame" x="34" y="56" width="83" height="40"/>
+                                <state key="normal" title="Search..">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="HlL-7p-Nng" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="CKl-Gf-3qg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="K8x-S6-PiL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="GT0-aP-g2Q"/>
-                            <constraint firstItem="K8x-S6-PiL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="T9W-6d-eLy"/>
-                            <constraint firstItem="K8x-S6-PiL" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="Zxa-uT-u0o"/>
-                            <constraint firstAttribute="trailing" secondItem="K8x-S6-PiL" secondAttribute="trailing" id="kBx-5u-F28"/>
+                            <constraint firstItem="K8x-S6-PiL" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="1ee-mn-dyx"/>
+                            <constraint firstItem="K8x-S6-PiL" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="9NN-fU-61s"/>
+                            <constraint firstItem="K8x-S6-PiL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="BW5-dE-bVD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K8x-S6-PiL" secondAttribute="trailing" constant="60" id="Fs9-ED-n5l"/>
+                            <constraint firstAttribute="trailing" secondItem="K8x-S6-PiL" secondAttribute="trailing" id="Hkn-zB-jz7"/>
+                            <constraint firstItem="K8x-S6-PiL" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="OPi-Eu-Nsy"/>
+                            <constraint firstAttribute="trailing" secondItem="K8x-S6-PiL" secondAttribute="trailing" id="be0-KD-c5e"/>
+                            <constraint firstItem="K8x-S6-PiL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="hIU-fM-aTS"/>
+                            <constraint firstItem="K8x-S6-PiL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="kBw-Pe-st8"/>
+                            <constraint firstItem="K8x-S6-PiL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="kYC-ex-erv"/>
+                            <constraint firstAttribute="trailing" secondItem="K8x-S6-PiL" secondAttribute="trailing" id="l59-AQ-OLn"/>
+                            <constraint firstItem="K8x-S6-PiL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="nEc-AS-xeN"/>
+                            <constraint firstItem="K8x-S6-PiL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="q9J-jF-Z8Q"/>
+                            <constraint firstItem="K8x-S6-PiL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="51" id="yDa-7W-hUI"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="9NN-fU-61s"/>
+                                <exclude reference="BW5-dE-bVD"/>
+                                <exclude reference="Fs9-ED-n5l"/>
+                                <exclude reference="Hkn-zB-jz7"/>
+                                <exclude reference="OPi-Eu-Nsy"/>
+                                <exclude reference="kBw-Pe-st8"/>
+                                <exclude reference="l59-AQ-OLn"/>
+                                <exclude reference="nEc-AS-xeN"/>
+                                <exclude reference="q9J-jF-Z8Q"/>
+                                <exclude reference="yDa-7W-hUI"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="theMap" destination="K8x-S6-PiL" id="bBc-tL-cea"/>
@@ -34,23 +76,61 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-262" y="-228"/>
+            <point key="canvasLocation" x="-270" y="-228"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="SEd-3V-IXM">
             <objects>
-                <viewController id="HlL-7p-Nng" customClass="ViewController" customModule="Caravan" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HlL-7p-Nng" customClass="SettingsViewController" customModule="Caravan" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wTe-RG-iYh"/>
-                        <viewControllerLayoutGuide type="bottom" id="BGv-9y-kBi"/>
+                        <viewControllerLayoutGuide type="top" id="Yzp-Rv-sFR"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Bj-IA-W5f"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Sm4-WL-uSz">
+                    <view key="view" contentMode="scaleToFill" id="gfM-ap-dby">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7A-pS-nwt">
+                                <rect key="frame" x="277" y="399" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="4DT-cB-htv" kind="unwind" unwindAction="unwindToViewController:" id="Ews-QX-1zr"/>
+                                </connections>
+                            </button>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="43C-gc-uIP">
+                                <rect key="frame" x="0.0" y="46" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.089999999999999997" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="43C-gc-uIP" firstAttribute="leading" secondItem="gfM-ap-dby" secondAttribute="leading" id="2vf-K0-ioG"/>
+                            <constraint firstItem="V7A-pS-nwt" firstAttribute="centerX" secondItem="43C-gc-uIP" secondAttribute="centerX" id="674-sl-aOW"/>
+                            <constraint firstAttribute="trailing" secondItem="43C-gc-uIP" secondAttribute="trailing" id="8L0-n7-tyF"/>
+                            <constraint firstAttribute="trailing" secondItem="43C-gc-uIP" secondAttribute="trailing" id="DAf-Bn-shW"/>
+                            <constraint firstItem="8Bj-IA-W5f" firstAttribute="top" secondItem="V7A-pS-nwt" secondAttribute="bottom" constant="171" id="Fd6-6J-iTt"/>
+                            <constraint firstItem="43C-gc-uIP" firstAttribute="top" secondItem="Yzp-Rv-sFR" secondAttribute="bottom" constant="115" id="QOk-AQ-Wkm"/>
+                            <constraint firstItem="43C-gc-uIP" firstAttribute="leading" secondItem="gfM-ap-dby" secondAttribute="leading" id="dR7-NM-Hre"/>
+                            <constraint firstItem="43C-gc-uIP" firstAttribute="centerX" secondItem="V7A-pS-nwt" secondAttribute="centerX" id="nVN-Sp-XXM"/>
+                            <constraint firstItem="43C-gc-uIP" firstAttribute="top" secondItem="Yzp-Rv-sFR" secondAttribute="bottom" constant="26" id="xsZ-I9-YNk"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8L0-n7-tyF"/>
+                                <exclude reference="QOk-AQ-Wkm"/>
+                                <exclude reference="dR7-NM-Hre"/>
+                                <exclude reference="674-sl-aOW"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="43C-gc-uIP" id="iv7-dG-8wX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6G2-Zf-32c" sceneMemberID="firstResponder"/>
+                <exit id="4DT-cB-htv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="478" y="-228"/>
         </scene>
