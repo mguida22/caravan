@@ -63,20 +63,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         } else {
             //stop following
             isTracking = false
+            performSearch()
         }
-    }
-    
-    @IBAction func getPOI(sender: AnyObject) {
-        
     }
     
     func performSearch() {
         
         matchingItems.removeAll()
         let request = MKLocalSearchRequest()
-        //request.naturalLanguageQuery = .text
+        request.naturalLanguageQuery = "food"
         request.region = myMap.region
-        
+
         let search = MKLocalSearch(request: request)
         
         search.startWithCompletionHandler({(response:
@@ -100,6 +97,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     var annotation = MKPointAnnotation()
                     annotation.coordinate = item.placemark.coordinate
                     annotation.title = item.name
+                    annotation.subtitle = item.phoneNumber
                     self.myMap.addAnnotation(annotation)
                 }
             }
@@ -165,7 +163,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
-            let colorDotArray = [ "dot-orange", "dot-green", "dot-purple"]
+        let colorDotArray = [ "dot-orange", "dot-green", "dot-purple", "dot-orange"]
         
         
             let identifier = "stopAnnotation"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -259,7 +259,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HiV-8r-NVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-921" y="504"/>
+            <point key="canvasLocation" x="-907" y="492"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="EMl-xx-RQh">
@@ -316,7 +316,7 @@
         <image name="magGlass" width="46" height="59"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="CKl-Gf-3qg"/>
         <segue reference="Z6s-7r-kuv"/>
+        <segue reference="CKl-Gf-3qg"/>
     </inferredMetricsTieBreakers>
 </document>

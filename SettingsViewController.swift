@@ -12,7 +12,7 @@ import CoreLocation
 
 
 class SettingsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
