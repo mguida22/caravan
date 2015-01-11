@@ -16,15 +16,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CARAVAN!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zuo-LN-Rv3">
-                                <rect key="frame" x="158" y="95" width="261" height="82"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="10c-uM-FBS">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="10c-uM-FBS" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="0ha-mB-D1F"/>
+                            <constraint firstItem="10c-uM-FBS" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Obw-oU-NLv"/>
+                            <constraint firstItem="10c-uM-FBS" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="R7p-JV-pRl"/>
+                            <constraint firstAttribute="trailing" secondItem="10c-uM-FBS" secondAttribute="trailing" id="qN3-mk-m2J"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="10c-uM-FBS" id="yUq-a8-xPH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

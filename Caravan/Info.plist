@@ -36,5 +36,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysDescription</key>
+	<string>&quot;Caravan will use your location&quot;</string>
 </dict>
 </plist>

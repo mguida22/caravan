@@ -8,34 +8,57 @@
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController {
 
+class ViewController: UIViewController, CLLocationManagerDelegate , MKMapViewDelegate{
+
+    @IBOutlet weak var mapView: MKMapView!
+    
+    var manager:CLLocationManager!
+    var myLocations: [CLLocation] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Set up location manager
+        
+        manager = CLLocationManager()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestAlwaysAuthorization()
+        manager.startUpdatingLocation()
+        
+        // set up the map view
+        mapView.delegate = self
+        mapView.mapType = MKMapType.Satellite
+        mapView.showsUserLocation = true
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
+  
+        func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
         
-        var camera = GMSCameraPosition.cameraWithLatitude(-33.86,
-            longitude: 151.20, zoom: 6)
-        var mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
-        mapView.myLocationEnabled = true
-        self.view = mapView
-        
-        var marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(-33.86, 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
-        
-        mapView.mapType = kGMSTypeSatellite
-        
-        
-        
+            
+            myLocations.append(locations[0] as CLLocation)
+            let spanX = 0.007
+            let spanY = 0.007
+            
+            var newRegion = MKCoordinateRegion(center: mapView.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
+            mapView.setRegion(newRegion, animated: true)
+            
+            
+            
+            
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
 
 
