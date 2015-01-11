@@ -41,7 +41,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //temp user id, need to add code to change this for new users
 
-    var tempUserId = 2
+    var tempUserId = 3
     var tempGroupId = 1
     
     //simple bool for testing
@@ -153,22 +153,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return myLineRenderer
     }
     
-    /*func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
-            let colorDotArray = [ "dot-orange", "dot-green", "dot-green"]
+        if (annotation is MKUserLocation) {
+            //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
+            //return nil so map draws default view for it (eg. blue dot)...
+            return nil
+        }
         
+        let colorDotArray = [ "dot-orange", "dot-green", "dot-green"]
+    
+    
+        let identifier = "stopAnnotation"
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+        if pinView == nil {
+            println("Pinview was nil")
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            pinView!.canShowCallout = true
+            pinView.image = UIImage(named: colorDotArray[tempUserId-1])
+        }
+        return pinView
         
-            let identifier = "stopAnnotation"
-            var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
-            if pinView == nil {
-                println("Pinview was nil")
-                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                pinView!.canShowCallout = true
-                pinView.image = UIImage(named: colorDotArray[tempUserId-1])
-            }
-            return pinView
-
-    }*/
+    }
 
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
         
@@ -188,7 +194,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     println("failed to update user data")
                 }
         }
-        //en of api to set user cords
+        //end of api to set user cords
 
         
         //get the other user's locations from the api
@@ -237,6 +243,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                         animations: {
                             self.annotations[newUser.id]!.coordinate.latitude = latitude!
                             self.annotations[newUser.id]!.coordinate.longitude = longitude!
+                            
+                            
+                            
+                            
                         }, completion: { finished in})
                     
                 }
@@ -254,6 +264,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //Setup origin and destination for navigation
         var userLat = 37.788031
         var userLong = -122.407480
+        
+        //use the setusercords apiPoint
+        Alamofire.request(.POST, apiEndpoint + "/setusercords",
+            
+            //set the api parameters
+            parameters: [
+                "longitude" : myMap.userLocation.coordinate.longitude,
+                "latitude" : myMap.userLocation.coordinate.latitude,
+                "userid" : tempUserId
+            ])
+            
+            //get the response as a string (simple true or false)
+            .responseString { (_, _, data, _) in
+                if(data! == "false") {
+                    println("failed to update user data")
+                }
+        }
+        //en of api to set user cords
+
         
         destination.title = "Union Square"
         destination.subtitle = "San Francisco"
