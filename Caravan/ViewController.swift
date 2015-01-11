@@ -67,23 +67,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var origin = MKPointAnnotation()
-        var destination = MKPointAnnotation()
-        
-        //Setup origin and destination for navigation
-        //let userLat = Mainannotation.coordinate.latitude
-        //let userLong = Mainannotation.coordinate.longitude
-        let userLat = 37.331797
-        let userLong = -122.029604
-        origin.coordinate = CLLocationCoordinate2DMake(userLat, userLong)
-        origin.title = "Current Location"
-        myMap.addAnnotation(origin)
-        
-        destination.coordinate = CLLocationCoordinate2DMake(37.788031, -122.407480)
-        destination.title = "Union Square"
-        destination.subtitle = "San Francisco"
-        myMap.addAnnotation(destination)
-        
         //Setup our Location Manager
         manager = CLLocationManager()
         manager.delegate = self
@@ -95,22 +78,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         myMap.delegate = self
         myMap.mapType = MKMapType.Standard
         myMap.showsUserLocation = true
-        
-        var directionsRequest = MKDirectionsRequest()
-        let markOrigin = MKPlacemark(coordinate: CLLocationCoordinate2DMake(origin.coordinate.latitude, origin.coordinate.longitude), addressDictionary: nil)
-        //let markOrigin = MKPlacemark(coordinate: CLLocationCoordinate2DMake(userLat, userLong), addressDictionary: nil)
-        let markDestination = MKPlacemark(coordinate: CLLocationCoordinate2DMake(destination.coordinate.latitude, destination.coordinate.longitude), addressDictionary: nil)
-        
-        directionsRequest.setSource(MKMapItem(placemark: markOrigin))
-        directionsRequest.setDestination(MKMapItem(placemark: markDestination))
-        directionsRequest.transportType = MKDirectionsTransportType.Automobile
-        var directions = MKDirections(request: directionsRequest)
-        directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
-            if error == nil {
-                self.myRoute = response.routes[0] as? MKRoute
-                self.myMap.addOverlay(self.myRoute?.polyline)
-            }
-        }
     }
     
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
@@ -139,6 +106,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     println("failed to update user data")
                 }
         }
+        //en of api to set user cords
 
         
         //get the other user's locations from the api
@@ -203,6 +171,53 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             var newRegion = MKCoordinateRegion(center: myMap.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
             myMap.setRegion(newRegion, animated: true)
         }
+        
+        ////start navigat
+        
+        
+        var origin = MKPointAnnotation()
+        var destination = MKPointAnnotation()
+        
+        //Setup origin and destination for navigation
+        var userLat = 37.331797
+        var userLong = -122.029604
+        
+        if(self.annotations[1]?.coordinate.latitude != nil) {
+            userLat = self.annotations[1]!.coordinate.latitude
+            userLong = self.annotations[1]!.coordinate.longitude
+        }
+        
+        myMap.addAnnotation(origin)
+        
+        destination.title = "Union Square"
+        destination.subtitle = "San Francisco"
+        myMap.addAnnotation(destination)
+        
+        var directionsRequest = MKDirectionsRequest()
+        var markOrigin = MKPlacemark(coordinate: CLLocationCoordinate2DMake(myMap.userLocation.coordinate.latitude, myMap.userLocation.coordinate.longitude), addressDictionary: nil)
+        
+        var markDestination = MKPlacemark(coordinate: CLLocationCoordinate2DMake(37.788031, -122.407480), addressDictionary: nil)
+        
+        println(markDestination.coordinate.latitude)
+        println(markDestination.coordinate.longitude)
+        
+        directionsRequest.setSource(MKMapItem(placemark: markOrigin))
+        directionsRequest.setDestination(MKMapItem(placemark: markDestination))
+        directionsRequest.transportType = MKDirectionsTransportType.Automobile
+        
+        var directions = MKDirections(request: directionsRequest)
+        
+        
+       directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
+            if error == nil {
+                self.myMap.removeOverlay(self.myRoute?.polyline)
+                self.myRoute = response.routes[0] as? MKRoute
+                self.myMap.addOverlay(self.myRoute?.polyline)
+            }
+        }
+        
+        
+        ////end navigation
         
     }
 }
