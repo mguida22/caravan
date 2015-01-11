@@ -25,6 +25,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         var batteryPercentage:Double
     }
     
+    var myRoute : MKRoute?
+    
     //create the main annotation
     var Mainannotation = MKPointAnnotation()
     var addedMainannotation = false
@@ -42,7 +44,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     //simple bool for testing
     var isTracking = true
     
-    @IBOutlet weak var theMap: MKMapView!
+    @IBOutlet weak var myMap: MKMapView!
     @IBOutlet weak var trackingSwitch: UISwitch!
     @IBAction func unwindToViewController (sender: UIStoryboardSegue){
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -66,17 +68,58 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var origin = MKPointAnnotation()
+        var destination = MKPointAnnotation()
+        
+        //Setup origin and destination for navigation
+        //let userLat = Mainannotation.coordinate.latitude
+        //let userLong = Mainannotation.coordinate.longitude
+        let userLat = 37.331797
+        let userLong = -122.029604
+        origin.coordinate = CLLocationCoordinate2DMake(userLat, userLong)
+        origin.title = "Current Location"
+        myMap.addAnnotation(origin)
+        
+        destination.coordinate = CLLocationCoordinate2DMake(37.788031, -122.407480)
+        destination.title = "Union Square"
+        destination.subtitle = "San Francisco"
+        myMap.addAnnotation(destination)
+        
         //Setup our Location Manager
         manager = CLLocationManager()
         manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         manager.requestAlwaysAuthorization()
         manager.startUpdatingLocation()
         
         //Setup our Map View
-        theMap.delegate = self
-        theMap.mapType = MKMapType.Standard
-        theMap.showsUserLocation = true
+        myMap.delegate = self
+        myMap.mapType = MKMapType.Standard
+        myMap.showsUserLocation = true
+        
+        var directionsRequest = MKDirectionsRequest()
+        let markOrigin = MKPlacemark(coordinate: CLLocationCoordinate2DMake(origin.coordinate.latitude, origin.coordinate.longitude), addressDictionary: nil)
+        //let markOrigin = MKPlacemark(coordinate: CLLocationCoordinate2DMake(userLat, userLong), addressDictionary: nil)
+        let markDestination = MKPlacemark(coordinate: CLLocationCoordinate2DMake(destination.coordinate.latitude, destination.coordinate.longitude), addressDictionary: nil)
+        
+        directionsRequest.setSource(MKMapItem(placemark: markOrigin))
+        directionsRequest.setDestination(MKMapItem(placemark: markDestination))
+        directionsRequest.transportType = MKDirectionsTransportType.Automobile
+        var directions = MKDirections(request: directionsRequest)
+        directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
+            if error == nil {
+                self.myRoute = response.routes[0] as? MKRoute
+                self.myMap.addOverlay(self.myRoute?.polyline)
+            }
+        }
+    }
+    
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        
+        var myLineRenderer = MKPolylineRenderer(polyline: myRoute?.polyline!)
+        myLineRenderer.strokeColor = UIColor.blueColor()
+        myLineRenderer.lineWidth = 3
+        return myLineRenderer
     }
     
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
@@ -84,14 +127,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //update the lat/long of the mainAnnotation (now with fancy animation)
         UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut | .AllowUserInteraction,
             animations: {
-                self.Mainannotation.coordinate.latitude = self.theMap.userLocation.coordinate.latitude
-                self.Mainannotation.coordinate.longitude = self.theMap.userLocation.coordinate.longitude
+                self.Mainannotation.coordinate.latitude = self.myMap.userLocation.coordinate.latitude
+                self.Mainannotation.coordinate.longitude = self.myMap.userLocation.coordinate.longitude
             }, completion: { finished in})
         
         //if the Annotation is not of the map, add it
         if(!addedMainannotation) {
             addedMainannotation = true
-            theMap.addAnnotation(Mainannotation)
+            myMap.addAnnotation(Mainannotation)
             Mainannotation.title = "me"
         }
         
@@ -100,8 +143,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             
             //set the api parameters
             parameters: [
-                "longitude" : theMap.userLocation.coordinate.longitude,
-                "latitude" : theMap.userLocation.coordinate.latitude,
+                "longitude" : myMap.userLocation.coordinate.longitude,
+                "latitude" : myMap.userLocation.coordinate.latitude,
                 "userid" : tempUserId
             ])
             
@@ -134,7 +177,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 for(var i = 0; i < data!.count-1; i++) {
                     
                    /* if(self.annotationList.count > 1){
-                        self.theMap.removeAnnotation(self.annotationList[1])
+                        self.myMap.removeAnnotation(self.annotationList[1])
                         self.annotationList.removeAtIndex(1)
                     }*/
                     
@@ -158,33 +201,32 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     
                     annotations.title = newUser.username
                     
-                    println(newUser.username)
-                    println(newUser.id)
+                    self.myMap.addAnnotation(annotations)
                     
-                    self.theMap.addAnnotation(annotations)
-                    /*
+                    self.myMap.addAnnotation(annotations)
+
                     if(self.annotations[newUser.id] == nil) {
                         
                         self.annotations[newUser.id] = MKPointAnnotation()
-                        self.theMap.addAnnotation(self.annotations[newUser.id])
-                        self.annotations[newUser.id].title = newUser.username
+                        self.myMap.addAnnotation(self.annotations[newUser.id])
+                        self.annotations[newUser.id]!.title = newUser.username
                         
                     }
                     
                     //update the lat/long of the mainAnnotation (now with fancy animation)
                     UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut | .AllowUserInteraction,
                         animations: {
-                            annotations[newUser.id].coordinate.latitude = self.theMap.userLocation.coordinate.latitude
-                            annotations[newUser.id].coordinate.longitude = self.theMap.userLocation.coordinate.longitude
+                            self.annotations[newUser.id]!.coordinate.latitude = latitude!
+                            self.annotations[newUser.id]!.coordinate.longitude = longitude!
                         }, completion: { finished in})
-                    */
+                    
                 }
             }
         }
         
         if isTracking {
-            var newRegion = MKCoordinateRegion(center: theMap.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
-            theMap.setRegion(newRegion, animated: true)
+            var newRegion = MKCoordinateRegion(center: myMap.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
+            myMap.setRegion(newRegion, animated: true)
         }
         
     }
