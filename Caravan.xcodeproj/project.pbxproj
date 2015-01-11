@@ -100,9 +100,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B52C711A1A61B1280018A3F8 = {
+		4CFC5ECF1A61F01D00FEB39F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				826EEE901A61CE8800C0D2F3 /* Caravan-Bridging-Header.h */,
 				821528C51A61DD5C00D74A45 /* GoogleMaps.bundle */,
 				821528C31A61DD5000D74A45 /* GoogleMaps.framework */,
 				826EEE911A61CE8900C0D2F3 /* Cbridge.m */,
@@ -118,10 +119,17 @@
 				826EEE7B1A61CC6100C0D2F3 /* OpenGLES.framework */,
 				826EEE7C1A61CC6100C0D2F3 /* QuartzCore.framework */,
 				826EEE7D1A61CC6100C0D2F3 /* SystemConfiguration.framework */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B52C711A1A61B1280018A3F8 = {
+			isa = PBXGroup;
+			children = (
+				4CFC5ECF1A61F01D00FEB39F /* Resources */,
 				B52C71251A61B1280018A3F8 /* Caravan */,
 				B52C713B1A61B1280018A3F8 /* CaravanTests */,
 				B52C71241A61B1280018A3F8 /* Products */,
-				826EEE901A61CE8800C0D2F3 /* Caravan-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
