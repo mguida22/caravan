@@ -1,6 +1,6 @@
 #page to get the user info from the database
 
-import web, json, pymysql, hashlib
+import web, json, pymysql, pymysql.cursors, hashlib, re
 
 urls = (
    '/user/(.*)', 'getUserData',
@@ -9,10 +9,56 @@ urls = (
 )
 
 class getUserData:
-   def GET(self, name):
-      pyDict = {name:1,'two':2}
+   def GET(self, userid):
+
+      #set the return type
       web.header('Content-Type', 'application/json')
-      return json.dumps(pyDict)
+
+      #check to make sure we are looking for a number only
+      finder = re.compile("^[0-9]*$")
+
+      #if we are only looking for a number
+      if finder.match(userid):
+
+         #connect to the database
+         conn = pymysql.connect(host='127.0.0.1', user='caravan',
+            passwd='5RykXMGvyn', db='caravan', cursorclass=pymysql.cursors.DictCursor)
+         cur = conn.cursor()
+
+         #excute to get the users data
+         cur.execute("SELECT * FROM users WHERE id = %s", [userid,])
+
+         #set the user data for output
+         userArray = cur.fetchone()
+
+         #if the user is found
+         if userArray != None:
+
+            userArray["timestamp"] = str(userArray["timestamp"])
+
+            #commit the changes
+            conn.commit()
+
+            #close the database connection
+            cur.close()
+            conn.close()
+
+            return json.dumps(userArray, sort_keys=True, indent=2,
+               separators=(',', ': '))
+
+         else:
+
+            return json.dumps({"id": -1}, sort_keys=True, indent=2,
+               separators=(',', ': '))
+
+
+
+
+      #if tried to search for something other than a number
+      else:
+
+         return json.dumps({"id": -1}, sort_keys=True, indent=2,
+               separators=(',', ': '))
 
 class createNewUser:
    def GET(self):
@@ -20,7 +66,7 @@ class createNewUser:
 
    def POST(self):
 
-      #we are going to return json
+      #set the return type
       web.header('Content-Type', 'application/json')
 
       #create the array to get the post data
@@ -34,7 +80,8 @@ class createNewUser:
          hashpass = hashlib.sha1(postArray.password).hexdigest()
 
          #connect to the database
-         conn = pymysql.connect(host='127.0.0.1', user='caravan', passwd='5RykXMGvyn', db='caravan')
+         conn = pymysql.connect(host='127.0.0.1', user='caravan',
+            passwd='5RykXMGvyn', db='caravan')
          cur = conn.cursor()
 
          #execute the command to insert a user into the database
@@ -46,11 +93,7 @@ class createNewUser:
             [postArray.username, hashpass])
 
          #create the return dictonary
-         returnDict = dict()
-
-         #set the new id to be returned
-         for row in cur:
-            returnDict["id"] = row[0]
+         returnDict = cur.fetchone()
 
          #commit the changes
          conn.commit()
@@ -60,13 +103,15 @@ class createNewUser:
          conn.close()
 
          #return the new created user id
-         return json.dumps(returnDict)
+         return json.dumps(returnDict, sort_keys=True, indent=2,
+            separators=(',', ': '))
 
       #if we did not recive the correct data
       else:
 
          #return error code
-         return json.dumps({"id": -1})
+         return json.dumps({"id": -1}, sort_keys=True, indent=2,
+               separators=(',', ': '))
 
 if __name__ == "__main__":
    app = web.application(urls, globals())
