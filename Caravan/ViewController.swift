@@ -38,7 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var apiEndpoint = "http://162.243.225.16:8080"
     
     //temp user id, need to add code to change this for new users
-    var tempUserId = 1
+    var tempUserId = 3
     var tempGroupId = 1
     
     //simple bool for testing
