@@ -186,7 +186,9 @@ Response:
       "batteryPercentage" : user_battery_percentage,
       "username" : user_username
    }
+   ,number_of_users
 ]
+```
 
 Table Layout (What you can get)
 ===
@@ -228,17 +230,6 @@ startingLatitude (double:3,6)
 startingLongitude (double:3,6)
 endingLatitude (double:3,6)
 endingLongitude (double:3,6)
-timestamp (timestamp)
-```
-
-Users To Group (might not need this)
----
-
-```sql
-id (int:11)
-active (bool:1)
-userid (int:11)
-groupid (int:11)
 timestamp (timestamp)
 ```
 

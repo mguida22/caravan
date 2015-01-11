@@ -35,7 +35,7 @@ class getGroupInfo:
             passwd='5RykXMGvyn', db='caravan')
          cur = conn.cursor()
 
-         #get the long/lat data if there is some
+         #get the user data for all users
          cur.execute('''SELECT longitude, latitude, id, gasPercentage,
             batteryPercentage, username FROM users
             WHERE groupid = %s and id != %s''',
@@ -47,9 +47,10 @@ class getGroupInfo:
          #fetch the destination data
          for row in cur:
 
-            #create blank dictinary
+            #create blank dictionary
             newUser = dict()
 
+            #fill out the dictionary
             newUser["longitude"] = row[0]
             newUser["latitude"] = row[1]
             newUser["userid"] = row[2]
@@ -57,6 +58,8 @@ class getGroupInfo:
             newUser["batteryPercentage"] = row[4]
             newUser["username"] = row[5]
             userinfo.append(newUser)
+
+         userinfo.append(len(userinfo))
 
          #close the database connection
          cur.close()
@@ -243,11 +246,6 @@ class joinUserGroup:
          #fetch the group id
          groupid = cur.fetchone()[0]
 
-         #insert the user into the group
-         cur.execute('''INSERT INTO usersToGroups(userid, groupid)
-            VALUES(%s, %s)''',
-            [postArray.userid, groupid])
-
          #change the groupid of the user
          cur.execute("UPDATE users SET groupid = %s WHERE id = %s",
             [groupid, postArray.userid])
@@ -285,10 +283,6 @@ class addUserToGroup:
          conn = pymysql.connect(host='127.0.0.1', user='caravan',
             passwd='5RykXMGvyn', db='caravan')
          cur = conn.cursor()
-
-         #execute the command to insert the user/group relation
-         cur.execute('''INSERT INTO usersToGroups(userid, groupid)
-            VALUES(%s, %s)''', [postArray.userid, postArray.groupid])
 
          #update the group id in the user table
          cur.execute("UPDATE users SET groupid = %s WHERE id = %s",
@@ -350,11 +344,6 @@ class createNewGroup:
          #change the group in the user table
          cur.execute("UPDATE users SET groupid = %s WHERE id = %s",
             [GroupArray["id"], postArray.userid])
-
-
-         #insert the user into the group
-         cur.execute('''INSERT INTO usersToGroups(userid, groupid)
-            VALUES(%s, %s)''', [postArray.userid, 2])
 
          #commit the changes
          conn.commit()
