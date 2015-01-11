@@ -27,6 +27,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     var myRoute : MKRoute?
     
+    var matchingItems: [MKMapItem] = [MKMapItem]()
+    
     //create the main annotation
     var addedMainannotation = false
     
@@ -64,6 +66,46 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
+    @IBAction func getPOI(sender: AnyObject) {
+        
+    }
+    
+    func performSearch() {
+        
+        matchingItems.removeAll()
+        let request = MKLocalSearchRequest()
+        //request.naturalLanguageQuery = .text
+        request.region = myMap.region
+        
+        let search = MKLocalSearch(request: request)
+        
+        search.startWithCompletionHandler({(response:
+            MKLocalSearchResponse!,
+            error: NSError!) in
+            
+            if error != nil {
+                println("Error occured in search: \(error.localizedDescription)")
+            } else if response.mapItems.count == 0 {
+                println("No matches found")
+            } else {
+                println("Matches found")
+                
+                for item in response.mapItems as [MKMapItem] {
+                    println("Name = \(item.name)")
+                    println("Phone = \(item.phoneNumber)")
+                    
+                    self.matchingItems.append(item as MKMapItem)
+                    println("Matching items = \(self.matchingItems.count)")
+                    
+                    var annotation = MKPointAnnotation()
+                    annotation.coordinate = item.placemark.coordinate
+                    annotation.title = item.name
+                    self.myMap.addAnnotation(annotation)
+                }
+            }
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,10 +113,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         var destination = MKPointAnnotation()
         
         //Setup origin and destination for navigation
-        //let userLat = Mainannotation.coordinate.latitude
-        //let userLong = Mainannotation.coordinate.longitude
-        let userLat = 37.331797
-        let userLong = -122.029604
+        var userLat = myMap.userLocation.coordinate.latitude
+        var userLong = myMap.userLocation.coordinate.longitude
+        //let userLat = 37.331797
+        //let userLong = -122.029604
         origin.coordinate = CLLocationCoordinate2DMake(userLat, userLong)
         origin.title = "Current Location"
         myMap.addAnnotation(origin)
