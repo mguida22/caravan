@@ -49,7 +49,7 @@ Response:
 }
 ```
 
-Set User Coordinates
+Set User Coordinates (/setcords)
 ---
 POST Request:
 ```
