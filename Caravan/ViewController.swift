@@ -28,6 +28,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var myRoute : MKRoute?
     
     var matchingItems: [MKMapItem] = [MKMapItem]()
+    var annotationPOI: [MKAnnotation] = [MKAnnotation]()
     
     //create the main annotation
     var addedMainannotation = false
@@ -52,8 +53,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-
-    
     var manager:CLLocationManager!
     var myLocations: [CLLocation] = []
     
@@ -69,6 +68,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func performSearch() {
+        
+        //remove old POI before getting new ones
+        while !annotationPOI.isEmpty {
+            myMap.removeAnnotation(annotationPOI.removeLast())
+        }
         
         matchingItems.removeAll()
         let request = MKLocalSearchRequest()
@@ -100,6 +104,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     annotation.title = item.name
                     annotation.subtitle = item.phoneNumber
                     self.myMap.addAnnotation(annotation)
+                    //add to annotationPOI list to keep track and later delete
+                    self.annotationPOI.append(annotation)
                 }
             }
         })
@@ -241,7 +247,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             myMap.setRegion(newRegion, animated: true)
         }
         
-        ////start navigat
+        ////start navigation
         var destination = MKPointAnnotation()
         
         //Setup origin and destination for navigation
