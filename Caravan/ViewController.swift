@@ -16,14 +16,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     let spanX = 0.015
     var myRoute : MKRoute?
     
-    
-    
     var isTracking = true
+    
     
     var annotationList: [MKPointAnnotation] = []
     
     
     @IBOutlet weak var theMap: MKMapView!
+    @IBOutlet weak var trackingSwitch: UISwitch!
     @IBAction func unwindToViewController (sender: UIStoryboardSegue){
         self.dismissViewControllerAnimated(true, completion: nil)
         
