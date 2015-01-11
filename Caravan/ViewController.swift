@@ -123,6 +123,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
+            let colorDotArray = [ "dot-orange", "dot-green", "dot-purple"]
+        
         
             let identifier = "stopAnnotation"
             var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
@@ -130,7 +132,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 //println("Pinview was nil")
                 pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 pinView!.canShowCallout = true
-                pinView.image = UIImage(named: "dot-orange")
+                pinView.image = UIImage(named: colorDotArray[tempUserId])
             }
             return pinView
 
