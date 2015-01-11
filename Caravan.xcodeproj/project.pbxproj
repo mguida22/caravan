@@ -16,6 +16,8 @@
 		B52C71301A61B1280018A3F8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52C712F1A61B1280018A3F8 /* Images.xcassets */; };
 		B52C71331A61B1280018A3F8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B52C71311A61B1280018A3F8 /* LaunchScreen.xib */; };
 		B52C713F1A61B1280018A3F8 /* CaravanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C713E1A61B1280018A3F8 /* CaravanTests.swift */; };
+		B5F1AC821A629A7300741118 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5F1AC7D1A629A4500741118 /* Alamofire.framework */; };
+		B5F1AC831A629A7300741118 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5F1AC7D1A629A4500741118 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,7 +28,49 @@
 			remoteGlobalIDString = B52C71221A61B1280018A3F8;
 			remoteInfo = Caravan;
 		};
+		B5F1AC7C1A629A4500741118 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5F1AC761A629A4500741118 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		B5F1AC7E1A629A4500741118 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5F1AC761A629A4500741118 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire OSX";
+		};
+		B5F1AC801A629A4500741118 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5F1AC761A629A4500741118 /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = AlamofireTests;
+		};
+		B5F1AC841A629A7300741118 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5F1AC761A629A4500741118 /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B5F1AC861A629A7300741118 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B5F1AC831A629A7300741118 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4C9210661A627ED500946571 /* Caravan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Caravan-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -43,6 +87,7 @@
 		B52C71381A61B1280018A3F8 /* CaravanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CaravanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52C713D1A61B1280018A3F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B52C713E1A61B1280018A3F8 /* CaravanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaravanTests.swift; sourceTree = "<group>"; };
+		B5F1AC761A629A4500741118 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5F1AC821A629A7300741118 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +112,7 @@
 		B52C711A1A61B1280018A3F8 = {
 			isa = PBXGroup;
 			children = (
+				B5F1AC761A629A4500741118 /* Alamofire.xcodeproj */,
 				4C9210661A627ED500946571 /* Caravan-Bridging-Header.h */,
 				B52C71251A61B1280018A3F8 /* Caravan */,
 				B52C713B1A61B1280018A3F8 /* CaravanTests */,
@@ -123,6 +170,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B5F1AC771A629A4500741118 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B5F1AC7D1A629A4500741118 /* Alamofire.framework */,
+				B5F1AC7F1A629A4500741118 /* Alamofire.framework */,
+				B5F1AC811A629A4500741118 /* AlamofireTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -133,10 +190,12 @@
 				B52C711F1A61B1280018A3F8 /* Sources */,
 				B52C71201A61B1280018A3F8 /* Frameworks */,
 				B52C71211A61B1280018A3F8 /* Resources */,
+				B5F1AC861A629A7300741118 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B5F1AC851A629A7300741118 /* PBXTargetDependency */,
 			);
 			name = Caravan;
 			productName = Caravan;
@@ -195,6 +254,12 @@
 			mainGroup = B52C711A1A61B1280018A3F8;
 			productRefGroup = B52C71241A61B1280018A3F8 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B5F1AC771A629A4500741118 /* Products */;
+					ProjectRef = B5F1AC761A629A4500741118 /* Alamofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B52C71221A61B1280018A3F8 /* Caravan */,
@@ -202,6 +267,30 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B5F1AC7D1A629A4500741118 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = B5F1AC7C1A629A4500741118 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B5F1AC7F1A629A4500741118 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = B5F1AC7E1A629A4500741118 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B5F1AC811A629A4500741118 /* AlamofireTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AlamofireTests.xctest;
+			remoteRef = B5F1AC801A629A4500741118 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B52C71211A61B1280018A3F8 /* Resources */ = {
@@ -251,6 +340,11 @@
 			isa = PBXTargetDependency;
 			target = B52C71221A61B1280018A3F8 /* Caravan */;
 			targetProxy = B52C71391A61B1280018A3F8 /* PBXContainerItemProxy */;
+		};
+		B5F1AC851A629A7300741118 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = B5F1AC841A629A7300741118 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -356,6 +450,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Caravan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
@@ -370,6 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Caravan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
