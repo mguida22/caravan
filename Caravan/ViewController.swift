@@ -8,36 +8,54 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
+    let spanY = 0.015
+    let spanX = 0.015
+    
+    @IBOutlet weak var theMap: MKMapView!
+    
+    var manager:CLLocationManager!
+    var myLocations: [CLLocation] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        var camera = GMSCameraPosition.cameraWithLatitude(-33.86,
-            longitude: 151.20, zoom: 6)
-        var mapView = GMSMapView.mapWithFrame(CGRectZero, camera: camera)
-        mapView.myLocationEnabled = true
-        self.view = mapView
+        //Setup our Location Manager
+        manager = CLLocationManager()
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestAlwaysAuthorization()
+        manager.startUpdatingLocation()
         
-        var marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(-33.86, 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
-        
-        mapView.mapType = kGMSTypeSatellite
-        
-        
-        
+        //Setup our Map View
+        theMap.delegate = self
+        theMap.mapType = MKMapType.Standard
+        theMap.showsUserLocation = true
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
+        myLocations.append(locations[0] as CLLocation)
+        
+        var annotation = MKPointAnnotation()
+        annotation.setCoordinate(theMap.userLocation.coordinate)
+        annotation.title = "Bob"
+        
+        theMap.addAnnotation(annotation)
+        
+        var newRegion = MKCoordinateRegion(center: theMap.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
+        theMap.setRegion(newRegion, animated: true)
     }
-
-
 }
+
+
+
+
+
+
+
+
 
