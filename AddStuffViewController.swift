@@ -1,42 +1,26 @@
 //
-//  SettingsViewController.swift
+//  AddStuffViewController.swift
 //  Caravan
 //
-//  Created by Andrew Gentry on 1/10/15.
+//  Created by Andrew Gentry on 1/11/15.
 //  Copyright (c) 2015 Caravan. All rights reserved.
 //
 
 import UIKit
 
-class SettingsViewController: UIViewController{
+class AddStuffViewController: UIViewController {
 
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var clearOut: UIButton!
     
     override func viewDidLoad() {
-        
-        searchBar.barTintColor = UIColor.blackColor()
-        
         super.viewDidLoad()
-        
-        if searchBar.searchResultsButtonSelected == true {
-            let userSearch = searchBar.text
-        }
-        
-        
-        func geocodeAddressString("userSearch": String!, completionHandler completionHandler: CLGeocodeCompletionHandler!)
 
         // Do any additional setup after loading the view.
     }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
-
-        
-        
     }
     
 

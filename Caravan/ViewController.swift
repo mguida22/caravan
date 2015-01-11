@@ -25,6 +25,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+
+    
     var manager:CLLocationManager!
     var myLocations: [CLLocation] = []
     

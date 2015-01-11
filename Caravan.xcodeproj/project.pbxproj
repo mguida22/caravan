@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		821528C81A6231F700D74A45 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821528C71A6231F700D74A45 /* SettingsViewController.swift */; };
+		82BDEFAB1A629D740082BE42 /* AddStuffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BDEFAA1A629D740082BE42 /* AddStuffViewController.swift */; };
+		82BDEFB11A62B7910082BE42 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BDEFB01A62B7910082BE42 /* PreferencesViewController.swift */; };
 		B52C71291A61B1280018A3F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C71281A61B1280018A3F8 /* AppDelegate.swift */; };
 		B52C712B1A61B1280018A3F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52C712A1A61B1280018A3F8 /* ViewController.swift */; };
 		B52C712E1A61B1280018A3F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52C712C1A61B1280018A3F8 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		4C9210661A627ED500946571 /* Caravan-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Caravan-Bridging-Header.h"; sourceTree = "<group>"; };
 		821528C71A6231F700D74A45 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
+		82BDEFAA1A629D740082BE42 /* AddStuffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddStuffViewController.swift; path = ../AddStuffViewController.swift; sourceTree = "<group>"; };
+		82BDEFB01A62B7910082BE42 /* PreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesViewController.swift; path = ../PreferencesViewController.swift; sourceTree = "<group>"; };
 		B52C71231A61B1280018A3F8 /* Caravan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Caravan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52C71271A61B1280018A3F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B52C71281A61B1280018A3F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,7 +85,9 @@
 		B52C71251A61B1280018A3F8 /* Caravan */ = {
 			isa = PBXGroup;
 			children = (
+				82BDEFB01A62B7910082BE42 /* PreferencesViewController.swift */,
 				821528C71A6231F700D74A45 /* SettingsViewController.swift */,
+				82BDEFAA1A629D740082BE42 /* AddStuffViewController.swift */,
 				B52C71281A61B1280018A3F8 /* AppDelegate.swift */,
 				B52C712A1A61B1280018A3F8 /* ViewController.swift */,
 				B52C712C1A61B1280018A3F8 /* Main.storyboard */,
@@ -166,6 +172,11 @@
 				TargetAttributes = {
 					B52C71221A61B1280018A3F8 = {
 						CreatedOnToolsVersion = 6.1.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					B52C71371A61B1280018A3F8 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -217,9 +228,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82BDEFB11A62B7910082BE42 /* PreferencesViewController.swift in Sources */,
 				B52C712B1A61B1280018A3F8 /* ViewController.swift in Sources */,
 				B52C71291A61B1280018A3F8 /* AppDelegate.swift in Sources */,
 				821528C81A6231F700D74A45 /* SettingsViewController.swift in Sources */,
+				82BDEFAB1A629D740082BE42 /* AddStuffViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
