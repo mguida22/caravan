@@ -104,6 +104,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     annotation.title = item.name
                     annotation.subtitle = item.phoneNumber
                     self.myMap.addAnnotation(annotation)
+
                     //add to annotationPOI list to keep track and later delete
                     self.annotationPOI.append(annotation)
                 }
