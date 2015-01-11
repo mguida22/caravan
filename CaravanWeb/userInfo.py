@@ -12,6 +12,7 @@ urls = (
    "/changefinaldestination", "changeFinalDestination",
    "/adddestination", "addDestination",
    "/getdestination", "getDestination",
+   "/removedestination", "removeDestination",
    "/getgroupinfo", "getGroupInfo"
 )
 
@@ -75,6 +76,39 @@ class getGroupInfo:
          return json.dumps(DestOutput, sort_keys=True, indent=2,
                separators=(',', ': '))
 
+class removeDestination:
+   def GET(self):
+      return "POST only"
+
+   def POST(self):
+
+      #if all data required is there
+      if "groupid" in postArray:
+
+         #connect to the database
+         conn = pymysql.connect(host='127.0.0.1', user='caravan',
+            passwd='5RykXMGvyn', db='caravan')
+         cur = conn.cursor()
+
+         #get the long/lat data if there is some
+         cur.execute("UPDATE groups SET active = 0 WHERE id = %s",
+            [postArray.groupid])
+
+         #commit the changes
+         conn.commit()
+
+         #close the database connection
+         cur.close()
+         conn.close()
+
+         return json.dumps(True, sort_keys=True, indent=2,
+            separators=(',', ': '))
+
+      else:
+
+         return json.dumps(False, sort_keys=True, indent=2,
+               separators=(',', ': '))
+
 class getDestination:
    def GET(self):
       return "POST only"
@@ -97,8 +131,8 @@ class getDestination:
 
          #get the long/lat data if there is some
          cur.execute('''SELECT longitude, latitude, userid FROM
-            destinationsToGroups WHERE groupid = %s ORDER BY timestamp DESC
-            LIMIT 1''', [postArray.groupid])
+            destinationsToGroups WHERE groupid = %s and active = 1
+            ORDER BY timestamp DESC LIMIT 1''', [postArray.groupid])
 
          #fetch the destination data
          Destdata = list(cur.fetchone())

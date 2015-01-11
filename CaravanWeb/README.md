@@ -148,7 +148,7 @@ Response:
 }
 ```
 
-Get Group Destintation (/getdestination)
+Get Group Destination (/getdestination)
 ---
 POST Request:
 ```
@@ -164,6 +164,19 @@ Response:
    "userid" : user_who_created_destintation,
    "type" : "final" (or "intermediate")
 }
+```
+
+Remove Group Destination (/removedestination)
+---
+POST Request:
+```
+{
+   "groupid" : groupid
+}
+```
+Response:
+```
+True (or False when error)
 ```
 
 Get Group Member Info (/getgroupinfo)
