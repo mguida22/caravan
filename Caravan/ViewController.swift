@@ -39,7 +39,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var apiEndpoint = "http://162.243.225.16:8080"
     
     //temp user id, need to add code to change this for new users
+<<<<<<< Updated upstream
     var tempUserId = 3
+=======
+    var tempUserId = 2
+>>>>>>> Stashed changes
     var tempGroupId = 1
     
     //simple bool for testing
@@ -147,21 +151,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
+<<<<<<< Updated upstream
         let colorDotArray = [ "dot-orange", "dot-green", "dot-purple", "dot-orange"]
+=======
+            let colorDotArray = [ "dot-orange", "dot-green", "dot-green"]
+>>>>>>> Stashed changes
         
         
             let identifier = "stopAnnotation"
             var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
             if pinView == nil {
-                //println("Pinview was nil")
+                println("Pinview was nil")
                 pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 pinView!.canShowCallout = true
-                pinView.image = UIImage(named: colorDotArray[tempUserId])
+                pinView.image = UIImage(named: colorDotArray[tempUserId-1])
             }
             return pinView
 
     }
-    
+
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
         
         //use the setusercords apiPoint
@@ -247,33 +255,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         
         ////start navigat
-        
-        
-        var origin = MKPointAnnotation()
         var destination = MKPointAnnotation()
         
         //Setup origin and destination for navigation
-        var userLat = 37.331797
-        var userLong = -122.029604
-        
-        if(self.annotations[1]?.coordinate.latitude != nil) {
-            userLat = self.annotations[1]!.coordinate.latitude
-            userLong = self.annotations[1]!.coordinate.longitude
-        }
-        
-        myMap.addAnnotation(origin)
+        var userLat = 37.788031
+        var userLong = -122.407480
         
         destination.title = "Union Square"
         destination.subtitle = "San Francisco"
+        destination.coordinate.latitude = userLat
+        destination.coordinate.longitude = userLong
         myMap.addAnnotation(destination)
+        CLLocationCoordinate2DMake(userLat, userLong)
         
         var directionsRequest = MKDirectionsRequest()
         var markOrigin = MKPlacemark(coordinate: CLLocationCoordinate2DMake(myMap.userLocation.coordinate.latitude, myMap.userLocation.coordinate.longitude), addressDictionary: nil)
         
-        var markDestination = MKPlacemark(coordinate: CLLocationCoordinate2DMake(37.788031, -122.407480), addressDictionary: nil)
-        
-        println(markDestination.coordinate.latitude)
-        println(markDestination.coordinate.longitude)
+        var markDestination = MKPlacemark(coordinate: CLLocationCoordinate2DMake(userLat, userLong), addressDictionary: nil)
         
         directionsRequest.setSource(MKMapItem(placemark: markOrigin))
         directionsRequest.setDestination(MKMapItem(placemark: markDestination))
