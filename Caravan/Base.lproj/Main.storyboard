@@ -71,7 +71,8 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="theMap" destination="K8x-S6-PiL" id="bBc-tL-cea"/>
+                        <outlet property="theMap" destination="K8x-S6-PiL" id="6C0-SD-kpD"/>
+                        <outlet property="trackingSwitch" destination="Teh-Fb-2RE" id="xk6-Rt-yF6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

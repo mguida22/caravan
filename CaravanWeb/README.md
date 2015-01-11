@@ -148,7 +148,7 @@ Response:
 }
 ```
 
-Get Group Destintation (/getdestination)
+Get Group Destination (/getdestination)
 ---
 POST Request:
 ```
@@ -164,6 +164,43 @@ Response:
    "userid" : user_who_created_destintation,
    "type" : "final" (or "intermediate")
 }
+```
+
+Remove Group Destination (/removedestination)
+---
+POST Request:
+```
+{
+   "groupid" : groupid
+}
+```
+Response:
+```
+True (or False when error)
+```
+
+Get Group Member Info (/getgroupinfo)
+---
+POST Request:
+```
+{
+   "groupid" : groupid_var,
+   "userid" : userid_var
+}
+```
+Response:
+```
+[
+   {
+      "longitude" : user_longitude,
+      "latitude" : user_latitude,
+      "userid" : user_id,
+      "gasPercentage" : user_gas_percentage,
+      "batteryPercentage" : user_battery_percentage,
+      "username" : user_username
+   }
+   ,number_of_users
+]
 ```
 
 Table Layout (What you can get)
@@ -206,17 +243,6 @@ startingLatitude (double:3,6)
 startingLongitude (double:3,6)
 endingLatitude (double:3,6)
 endingLongitude (double:3,6)
-timestamp (timestamp)
-```
-
-Users To Group (might not need this)
----
-
-```sql
-id (int:11)
-active (bool:1)
-userid (int:11)
-groupid (int:11)
 timestamp (timestamp)
 ```
 

@@ -11,8 +11,103 @@ urls = (
    "/joinusergroup", "joinUserGroup",
    "/changefinaldestination", "changeFinalDestination",
    "/adddestination", "addDestination",
-   "/getdestination", "getDestination"
+   "/getdestination", "getDestination",
+   "/removedestination", "removeDestination",
+   "/getgroupinfo", "getGroupInfo"
 )
+
+class getGroupInfo:
+   def GET(self):
+      return "POST only"
+
+   def POST(self):
+
+      #set the return type
+      web.header('Content-Type', 'application/json')
+
+      #create the array to get the post data
+      postArray = web.input()
+
+      #if all data required is there
+      if "groupid" in postArray and "userid" in postArray:
+
+         #connect to the database
+         conn = pymysql.connect(host='127.0.0.1', user='caravan',
+            passwd='5RykXMGvyn', db='caravan')
+         cur = conn.cursor()
+
+         #get the user data for all users
+         cur.execute('''SELECT longitude, latitude, id, gasPercentage,
+            batteryPercentage, username FROM users
+            WHERE groupid = %s and id != %s''',
+            [postArray.groupid, postArray.userid])
+
+         #create blank list of users
+         userinfo = list()
+
+         #fetch the destination data
+         for row in cur:
+
+            #create blank dictionary
+            newUser = dict()
+
+            #fill out the dictionary
+            newUser["longitude"] = row[0]
+            newUser["latitude"] = row[1]
+            newUser["userid"] = row[2]
+            newUser["gasPercentage"] = row[3]
+            newUser["batteryPercentage"] = row[4]
+            newUser["username"] = row[5]
+            userinfo.append(newUser)
+
+         userinfo.append(len(userinfo))
+
+         #close the database connection
+         cur.close()
+         conn.close()
+
+         return json.dumps(userinfo, sort_keys=True, indent=2,
+            separators=(',', ': '))
+
+      else:
+
+         DestOutput = []
+
+         return json.dumps(DestOutput, sort_keys=True, indent=2,
+               separators=(',', ': '))
+
+class removeDestination:
+   def GET(self):
+      return "POST only"
+
+   def POST(self):
+
+      #if all data required is there
+      if "groupid" in postArray:
+
+         #connect to the database
+         conn = pymysql.connect(host='127.0.0.1', user='caravan',
+            passwd='5RykXMGvyn', db='caravan')
+         cur = conn.cursor()
+
+         #get the long/lat data if there is some
+         cur.execute("UPDATE groups SET active = 0 WHERE id = %s",
+            [postArray.groupid])
+
+         #commit the changes
+         conn.commit()
+
+         #close the database connection
+         cur.close()
+         conn.close()
+
+         return json.dumps(True, sort_keys=True, indent=2,
+            separators=(',', ': '))
+
+      else:
+
+         return json.dumps(False, sort_keys=True, indent=2,
+               separators=(',', ': '))
 
 class getDestination:
    def GET(self):
@@ -36,8 +131,8 @@ class getDestination:
 
          #get the long/lat data if there is some
          cur.execute('''SELECT longitude, latitude, userid FROM
-            destinationsToGroups WHERE groupid = %s ORDER BY timestamp DESC
-            LIMIT 1''', [postArray.groupid])
+            destinationsToGroups WHERE groupid = %s and active = 1
+            ORDER BY timestamp DESC LIMIT 1''', [postArray.groupid])
 
          #fetch the destination data
          Destdata = list(cur.fetchone())
@@ -66,8 +161,8 @@ class getDestination:
          cur.close()
          conn.close()
 
-         return json.dumps(DestOutput,
-            sort_keys=True, indent=2, separators=(',', ': '))
+         return json.dumps(DestOutput, sort_keys=True,
+            indent=2, separators=(',', ': '))
 
       else:
 
@@ -185,11 +280,6 @@ class joinUserGroup:
          #fetch the group id
          groupid = cur.fetchone()[0]
 
-         #insert the user into the group
-         cur.execute('''INSERT INTO usersToGroups(userid, groupid)
-            VALUES(%s, %s)''',
-            [postArray.userid, groupid])
-
          #change the groupid of the user
          cur.execute("UPDATE users SET groupid = %s WHERE id = %s",
             [groupid, postArray.userid])
@@ -227,10 +317,6 @@ class addUserToGroup:
          conn = pymysql.connect(host='127.0.0.1', user='caravan',
             passwd='5RykXMGvyn', db='caravan')
          cur = conn.cursor()
-
-         #execute the command to insert the user/group relation
-         cur.execute('''INSERT INTO usersToGroups(userid, groupid)
-            VALUES(%s, %s)''', [postArray.userid, postArray.groupid])
 
          #update the group id in the user table
          cur.execute("UPDATE users SET groupid = %s WHERE id = %s",
@@ -292,11 +378,6 @@ class createNewGroup:
          #change the group in the user table
          cur.execute("UPDATE users SET groupid = %s WHERE id = %s",
             [GroupArray["id"], postArray.userid])
-
-
-         #insert the user into the group
-         cur.execute('''INSERT INTO usersToGroups(userid, groupid)
-            VALUES(%s, %s)''', [postArray.userid, 2])
 
          #commit the changes
          conn.commit()
