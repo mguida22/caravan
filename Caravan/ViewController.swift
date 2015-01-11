@@ -40,8 +40,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
         myLocations.append(locations[0] as CLLocation)
         
+        
+
+        // Pass in other users coordinates here
+        let latOff = theMap.userLocation.coordinate.latitude - 0.002
+        let longOff = theMap.userLocation.coordinate.longitude - 0.001
+        
+        var offSet = CLLocationCoordinate2DMake(latOff, longOff)
+        
         var annotation = MKPointAnnotation()
-        annotation.setCoordinate(theMap.userLocation.coordinate)
+        annotation.setCoordinate(offSet)
         annotation.title = "Bob"
         
         theMap.addAnnotation(annotation)
