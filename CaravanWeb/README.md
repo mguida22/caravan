@@ -2,7 +2,7 @@ Caravan Server
 ===
 
 API Layout (How you get things)
-----
+===
 
 Sign users up (/newuser)
 ---
@@ -64,15 +64,34 @@ Response:
 true (or false depending on if it was updated)
 ```
 
+Create New Group (/newgroup)
+---
+POST Request:
+```
+{
+   "startinglong" : start_log_var,
+   "startinglat" : start_lat_var,
+   "endinglong" : end_long_var,
+   "endinglat" : end_lat_var,
+   "userid" : id_var
+}
+```
+Response:
+```
+{
+   "id" : group_id
+}
+```
+
 Table Layout (What you can get)
-----
+===
 The format is the following
 
 ```sql
 nameOfItem (type:max_length(, decimal length))
 ```
 
-Users 
+Users
 ---
 
 
@@ -99,6 +118,7 @@ Groups
 ```sql
 id (int:11)
 active (bool:1)
+groupcreater (int:11)
 startingLatitude (double:3,6)
 startingLongitude (double:3,6)
 endingLatitude (double:3,6)

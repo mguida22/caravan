@@ -39,7 +39,7 @@ class createNewGroup:
             postArray.userid])
 
          #get the group id
-         cur.execute('''SELECT id, groupcreater FROM groups WHERE
+         cur.execute('''SELECT id FROM groups WHERE
             groupcreater = %s ORDER BY timestamp DESC LIMIT 1''',
             [postArray.userid])
 
@@ -49,7 +49,6 @@ class createNewGroup:
          tempArray = cur.fetchone()
 
          GroupArray["id"] = tempArray[0]
-         GroupArray["groupcreater"] = tempArray[1]
 
          #insert the user into the group
          cur.execute('''INSERT INTO usersToGroups(userid, groupid)
