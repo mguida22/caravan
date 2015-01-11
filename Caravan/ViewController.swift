@@ -102,6 +102,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         var offSet = CLLocationCoordinate2DMake(latOff, longOff)
         
+        
+        while (!annotationList.isEmpty){
+            theMap.removeAnnotation(annotationList[0])
+            annotationList.removeAtIndex(0)
+        }
+        
         var annotation = MKPointAnnotation()
         annotation.setCoordinate(offSet)
         annotation.title = "Bob"
