@@ -83,6 +83,36 @@ Response:
 }
 ```
 
+Add to Group (/addtogroup)
+---
+POST Request:
+```
+{
+   "userid" : id_var,
+   "groupid" : groupid_var
+}
+```
+Response:
+```
+true (or false if not added)
+```
+
+Join User Group (/joinusergroup)
+---
+POST Request:
+```
+{
+   "userid" : id_var,
+   "usertojoinid" : id2_var
+}
+```
+Response:
+```
+{
+   "groupid" : groupid_var
+}
+```
+
 Table Layout (What you can get)
 ===
 The format is the following

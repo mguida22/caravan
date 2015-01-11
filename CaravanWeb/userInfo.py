@@ -6,8 +6,102 @@ urls = (
    '/user/(.*)', 'getUserData',
    '/newuser', 'createNewUser',
    "/setcords", "setLatLong",
-   "/newgroup", "createNewGroup"
+   "/newgroup", "createNewGroup",
+   "/addtogroup", "addUserToGroup",
+   "/joinusergroup", "joinUserGroup"
 )
+
+class joinUserGroup:
+   def GET(self):
+      return "POST only"
+
+   def POST(self):
+
+      #set the return type
+      web.header('Content-Type', 'application/json')
+
+      #create the array to get the post data
+      postArray = web.input()
+
+      #if all data required is there
+      if "userid" in postArray and "usertojoinid" in postArray:
+
+         #connect to the database
+         conn = pymysql.connect(host='127.0.0.1', user='caravan',
+            passwd='5RykXMGvyn', db='caravan')
+         cur = conn.cursor()
+
+         #get the group id of the user we want to join
+         cur.execute("SELECT groupid FROM users WHERE id = %s",
+            [postArray.usertojoinid])
+
+         #fetch the group id
+         groupid = cur.fetchone()[0]
+
+         #insert the user into the group
+         cur.execute('''INSERT INTO usersToGroups(userid, groupid)
+            VALUES(%s, %s)''',
+            [postArray.userid, groupid])
+
+         #change the groupid of the user
+         cur.execute("UPDATE users SET groupid = %s WHERE id = %s",
+            [groupid, postArray.userid])
+
+         #commit the changes
+         conn.commit()
+
+         #close the database connection
+         cur.close()
+         conn.close()
+
+         return json.dumps({"groupid" : groupid}, sort_keys=True, indent=2,
+               separators=(',', ': '))
+
+      else:
+         return json.dumps({"groupid" : -1}, sort_keys=True, indent=2,
+               separators=(',', ': '))
+
+class addUserToGroup:
+   def GET(self):
+      return "POST only"
+
+   def POST(self):
+
+      #set the return type
+      web.header('Content-Type', 'application/json')
+
+      #create the array to get the post data
+      postArray = web.input()
+
+      #if all data required is there
+      if "userid" in postArray and "groupid" in postArray:
+
+         #connect to the database
+         conn = pymysql.connect(host='127.0.0.1', user='caravan',
+            passwd='5RykXMGvyn', db='caravan')
+         cur = conn.cursor()
+
+         #execute the command to insert the user/group relation
+         cur.execute('''INSERT INTO usersToGroups(userid, groupid)
+            VALUES(%s, %s)''', [postArray.userid, postArray.groupid])
+
+         #update the group id in the user table
+         cur.execute("UPDATE users SET groupid = %s WHERE id = %s",
+            [postArray.groupid, postArray.userid])
+
+         #commit the changes
+         conn.commit()
+
+         #close the database connection
+         cur.close()
+         conn.close()
+
+         return json.dumps(True, sort_keys=True, indent=2,
+               separators=(',', ': '))
+
+      else:
+         return json.dumps(False, sort_keys=True, indent=2,
+               separators=(',', ': '))
 
 class createNewGroup:
    def GET(self):
@@ -45,10 +139,13 @@ class createNewGroup:
 
          #set the id data for output
          GroupArray = dict()
-
          tempArray = cur.fetchone()
-
          GroupArray["id"] = tempArray[0]
+
+         #change the group in the user table
+         cur.execute("UPDATE users SET groupid = %s WHERE id = %s",
+            [GroupArray["id"], postArray.userid])
+
 
          #insert the user into the group
          cur.execute('''INSERT INTO usersToGroups(userid, groupid)
