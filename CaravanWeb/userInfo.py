@@ -5,8 +5,69 @@ import web, json, pymysql, pymysql.cursors, hashlib, re
 urls = (
    '/user/(.*)', 'getUserData',
    '/newuser', 'createNewUser',
-   "/setcords", "setLatLong"
+   "/setcords", "setLatLong",
+   "/newgroup", "createNewGroup"
 )
+
+class createNewGroup:
+   def GET(self):
+      return "POST only"
+
+   def POST(self):
+
+      #set the return type
+      web.header('Content-Type', 'application/json')
+
+      #create the array to get the post data
+      postArray = web.input()
+
+      #if all data requested is there
+      if("startinglong" in postArray and "startinglat" in postArray
+         and "endinglong" in postArray and "endinglat" in postArray and
+         "userid" in postArray):
+
+         #connect to the database
+         conn = pymysql.connect(host='127.0.0.1', user='caravan',
+            passwd='5RykXMGvyn', db='caravan')
+         cur = conn.cursor()
+
+         #execute the command to insert the group into the database
+         cur.execute('''INSERT INTO groups(startingLatitude, startingLongitude,
+            endingLatitude, endingLongitude, groupcreater)
+            VALUES(%s, %s, %s, %s, %s)''', [postArray.startinglat,
+            postArray.startinglong, postArray.endinglat, postArray.endinglong,
+            postArray.userid])
+
+         #get the group id
+         cur.execute('''SELECT id, groupcreater FROM groups WHERE
+            groupcreater = %s ORDER BY timestamp DESC LIMIT 1''',
+            [postArray.userid])
+
+         #set the id data for output
+         GroupArray = dict()
+
+         tempArray = cur.fetchone()
+
+         GroupArray["id"] = tempArray[0]
+         GroupArray["groupcreater"] = tempArray[1]
+
+         #insert the user into the group
+         cur.execute('''INSERT INTO usersToGroups(userid, groupid)
+            VALUES(%s, %s)''', [postArray.userid, 2])
+
+         #commit the changes
+         conn.commit()
+
+         #close the database connection
+         cur.close()
+         conn.close()
+
+         return json.dumps(GroupArray, sort_keys=True, indent=2,
+               separators=(',', ': '))
+
+      else:
+         return json.dumps({"id": "-1"}, sort_keys=True, indent=2,
+               separators=(',', ': '))
 
 class setLatLong:
    def GET(self):
@@ -30,8 +91,9 @@ class setLatLong:
          cur = conn.cursor()
 
          #execute the command to insert a user into the database
-         cur.execute("UPDATE users SET latitude = %s, longitude = %s WHERE id = %s",
-            [postArray.latitude, postArray.longitude, postArray.userid])
+         cur.execute('''UPDATE users SET latitude = %s, longitude = %s WHERE
+            id = %s''', [postArray.latitude, postArray.longitude,
+            postArray.userid])
 
          #commit the changes
          conn.commit()
@@ -61,7 +123,8 @@ class getUserData:
 
          #connect to the database
          conn = pymysql.connect(host='127.0.0.1', user='caravan',
-            passwd='5RykXMGvyn', db='caravan', cursorclass=pymysql.cursors.DictCursor)
+            passwd='5RykXMGvyn', db='caravan',
+            cursorclass=pymysql.cursors.DictCursor)
          cur = conn.cursor()
 
          #excute to get the users data
@@ -124,12 +187,13 @@ class createNewUser:
          cur = conn.cursor()
 
          #execute the command to insert a user into the database
-         cur.execute("INSERT INTO users(username, password, email) VALUES(%s, %s, %s)",
-            [postArray.username, hashpass, postArray.email])
+         cur.execute('''INSERT INTO users(username, password, email)
+            VALUES(%s, %s, %s)''', [postArray.username, hashpass,
+            postArray.email])
 
          #find out the new users id
-         cur.execute("SELECT id FROM users WHERE username = %s AND password = %s",
-            [postArray.username, hashpass])
+         cur.execute('''SELECT id FROM users WHERE username = %s
+            AND password = %s''', [postArray.username, hashpass])
 
          #create the return dictonary
          returnDict = cur.fetchone()
