@@ -43,7 +43,7 @@
 /* Begin PBXFileReference section */
 		821528C31A61DD5000D74A45 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "GoogleMaps-iOS-1.9.1/GoogleMaps.framework"; sourceTree = "<group>"; };
 		821528C51A61DD5C00D74A45 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = "GoogleMaps-iOS-1.9.1/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle"; sourceTree = "<group>"; };
-		821528C71A6231F700D74A45 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		821528C71A6231F700D74A45 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = ../SettingsViewController.swift; sourceTree = "<group>"; };
 		826EEE781A61CC6100C0D2F3 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		826EEE791A61CC6100C0D2F3 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		826EEE7A1A61CC6100C0D2F3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -127,7 +127,6 @@
 		B52C711A1A61B1280018A3F8 = {
 			isa = PBXGroup;
 			children = (
-				821528C71A6231F700D74A45 /* SettingsViewController.swift */,
 				4CFC5ECF1A61F01D00FEB39F /* Resources */,
 				B52C71251A61B1280018A3F8 /* Caravan */,
 				B52C713B1A61B1280018A3F8 /* CaravanTests */,
@@ -147,6 +146,7 @@
 		B52C71251A61B1280018A3F8 /* Caravan */ = {
 			isa = PBXGroup;
 			children = (
+				821528C71A6231F700D74A45 /* SettingsViewController.swift */,
 				B52C71281A61B1280018A3F8 /* AppDelegate.swift */,
 				B52C712A1A61B1280018A3F8 /* ViewController.swift */,
 				B52C712C1A61B1280018A3F8 /* Main.storyboard */,

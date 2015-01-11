@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -28,6 +28,12 @@
                                     </mask>
                                 </variation>
                             </mapView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xN-TQ-TZl">
+                                <rect key="frame" x="535" y="561" width="51" height="31"/>
+                                <connections>
+                                    <action selector="doTracking:" destination="vXZ-lx-hvc" eventType="valueChanged" id="huy-Nx-zg6"/>
+                                </connections>
+                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grE-II-fyk">
                                 <rect key="frame" x="34" y="56" width="83" height="40"/>
                                 <state key="normal" title="Search..">
@@ -48,11 +54,13 @@
                             <constraint firstItem="K8x-S6-PiL" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="OPi-Eu-Nsy"/>
                             <constraint firstAttribute="trailing" secondItem="K8x-S6-PiL" secondAttribute="trailing" id="be0-KD-c5e"/>
                             <constraint firstItem="K8x-S6-PiL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="hIU-fM-aTS"/>
+                            <constraint firstItem="1xN-TQ-TZl" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="i5s-69-TsE"/>
                             <constraint firstItem="K8x-S6-PiL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="kBw-Pe-st8"/>
                             <constraint firstItem="K8x-S6-PiL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="kYC-ex-erv"/>
                             <constraint firstAttribute="trailing" secondItem="K8x-S6-PiL" secondAttribute="trailing" id="l59-AQ-OLn"/>
                             <constraint firstItem="K8x-S6-PiL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="nEc-AS-xeN"/>
                             <constraint firstItem="K8x-S6-PiL" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="q9J-jF-Z8Q"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="1xN-TQ-TZl" secondAttribute="bottom" constant="8" symbolic="YES" id="tOv-7S-ZnJ"/>
                             <constraint firstItem="K8x-S6-PiL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="51" id="yDa-7W-hUI"/>
                         </constraints>
                         <variation key="default">
@@ -72,6 +80,7 @@
                     </view>
                     <connections>
                         <outlet property="theMap" destination="K8x-S6-PiL" id="6C0-SD-kpD"/>
+                        <outlet property="trackingSwitch" destination="1xN-TQ-TZl" id="Cgj-0F-F7e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -96,7 +105,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="4DT-cB-htv" kind="unwind" unwindAction="unwindToViewController:" id="Ews-QX-1zr"/>
+                                    <segue destination="4DT-cB-htv" kind="unwind" unwindAction="unwindToViewController:" id="F27-tH-fgE"/>
                                 </connections>
                             </button>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="43C-gc-uIP">
