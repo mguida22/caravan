@@ -2,7 +2,7 @@ Caravan Server
 ===
 
 API Layout (How you get things)
-----
+===
 
 Sign users up (/newuser)
 ---
@@ -49,7 +49,7 @@ Response:
 }
 ```
 
-Set User Coordinates (/setcords)
+Set User Coordinates (/setusercords)
 ---
 POST Request:
 ```
@@ -64,15 +64,154 @@ Response:
 true (or false depending on if it was updated)
 ```
 
+Create New Group (/newgroup)
+---
+POST Request:
+```
+{
+   "startinglong" : start_log_var,
+   "startinglat" : start_lat_var,
+   "endinglong" : end_long_var,
+   "endinglat" : end_lat_var,
+   "userid" : id_var
+}
+```
+Response:
+```
+{
+   "id" : group_id
+}
+```
+
+Add to Group (/addtogroup)
+---
+POST Request:
+```
+{
+   "userid" : id_var,
+   "groupid" : groupid_var
+}
+```
+Response:
+```
+true (or false if not added)
+```
+
+Join User Group (/joinusergroup)
+---
+POST Request:
+```
+{
+   "userid" : id_var,
+   "usertojoinid" : id2_var
+}
+```
+Response:
+```
+{
+   "groupid" : groupid_var
+}
+```
+
+Change Final Destination (/changeFinalDestination)
+---
+POST Request:
+```
+{
+   "groupid" : groupid_var,
+   "endinglong" : ending_longitude_var,
+   "endinglat" : ending_latitude_var
+}
+```
+Response:
+```
+{
+   "groupid" : groupid
+}
+```
+
+Add Destination to Group (/addDestination)
+---
+POST Request:
+```
+{
+   "groupid" : groupid_var,
+   "longitude" : longitude_var,
+   "latitude" : latitude_var,
+   "userid" : userid_var
+}
+```
+Response:
+```
+{
+   "groupid" : groupid
+}
+```
+
+Get Group Destination (/getdestination)
+---
+POST Request:
+```
+{
+   "groupid" : groupid_var
+}
+```
+Response:
+```
+{
+   "longitude" : destination_longitude,
+   "latitude" : destination_latidtude,
+   "userid" : user_who_created_destintation,
+   "type" : "final" (or "intermediate")
+}
+```
+
+Remove Group Destination (/removedestination)
+---
+POST Request:
+```
+{
+   "groupid" : groupid
+}
+```
+Response:
+```
+True (or False when error)
+```
+
+Get Group Member Info (/getgroupinfo)
+---
+POST Request:
+```
+{
+   "groupid" : groupid_var,
+   "userid" : userid_var
+}
+```
+Response:
+```
+[
+   {
+      "longitude" : user_longitude,
+      "latitude" : user_latitude,
+      "userid" : user_id,
+      "gasPercentage" : user_gas_percentage,
+      "batteryPercentage" : user_battery_percentage,
+      "username" : user_username
+   }
+   ,number_of_users
+]
+```
+
 Table Layout (What you can get)
-----
+===
 The format is the following
 
 ```sql
 nameOfItem (type:max_length(, decimal length))
 ```
 
-Users 
+Users
 ---
 
 
@@ -99,21 +238,11 @@ Groups
 ```sql
 id (int:11)
 active (bool:1)
+groupcreater (int:11)
 startingLatitude (double:3,6)
 startingLongitude (double:3,6)
 endingLatitude (double:3,6)
 endingLongitude (double:3,6)
-timestamp (timestamp)
-```
-
-Users To Group (might not need this)
----
-
-```sql
-id (int:11)
-active (bool:1)
-userid (int:11)
-groupid (int:11)
 timestamp (timestamp)
 ```
 
