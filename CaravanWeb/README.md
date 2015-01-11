@@ -49,7 +49,7 @@ Response:
 }
 ```
 
-Set User Coordinates (/setcords)
+Set User Coordinates (/setusercords)
 ---
 POST Request:
 ```
@@ -110,6 +110,59 @@ Response:
 ```
 {
    "groupid" : groupid_var
+}
+```
+
+Change Final Destination (/changeFinalDestination)
+---
+POST Request:
+```
+{
+   "groupid" : groupid_var,
+   "endinglong" : ending_longitude_var,
+   "endinglat" : ending_latitude_var
+}
+```
+Response:
+```
+{
+   "groupid" : groupid
+}
+```
+
+Add Destination to Group (/addDestination)
+---
+POST Request:
+```
+{
+   "groupid" : groupid_var,
+   "longitude" : longitude_var,
+   "latitude" : latitude_var,
+   "userid" : userid_var
+}
+```
+Response:
+```
+{
+   "groupid" : groupid
+}
+```
+
+Get Group Destintation (/getdestination)
+---
+POST Request:
+```
+{
+   "groupid" : groupid_var
+}
+```
+Response:
+```
+{
+   "longitude" : destination_longitude,
+   "latitude" : destination_latidtude,
+   "userid" : user_who_created_destintation,
+   "type" : "final" (or "intermediate")
 }
 ```
 
