@@ -39,11 +39,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var apiEndpoint = "http://162.243.225.16:8080"
     
     //temp user id, need to add code to change this for new users
-<<<<<<< Updated upstream
-    var tempUserId = 3
-=======
+
     var tempUserId = 2
->>>>>>> Stashed changes
     var tempGroupId = 1
     
     //simple bool for testing
@@ -149,13 +146,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return myLineRenderer
     }
     
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    /*func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
-<<<<<<< Updated upstream
-        let colorDotArray = [ "dot-orange", "dot-green", "dot-purple", "dot-orange"]
-=======
             let colorDotArray = [ "dot-orange", "dot-green", "dot-green"]
->>>>>>> Stashed changes
         
         
             let identifier = "stopAnnotation"
@@ -168,7 +161,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             }
             return pinView
 
-    }
+    }*/
 
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
         
