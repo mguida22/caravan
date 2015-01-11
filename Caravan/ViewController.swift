@@ -163,6 +163,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return myLineRenderer
     }
     
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        
+            let colorDotArray = [ "dot-orange", "dot-green", "dot-purple"]
+        
+        
+            let identifier = "stopAnnotation"
+            var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+            if pinView == nil {
+                //println("Pinview was nil")
+                pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                pinView!.canShowCallout = true
+                pinView.image = UIImage(named: colorDotArray[tempUserId])
+            }
+            return pinView
+
+    }
+    
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
         
         //use the setusercords apiPoint
