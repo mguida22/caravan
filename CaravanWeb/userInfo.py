@@ -52,10 +52,10 @@ class getGroupInfo:
 
             newUser["longitude"] = row[0]
             newUser["latitude"] = row[1]
-            newUser["id"] = row[2]
+            newUser["userid"] = row[2]
             newUser["gasPercentage"] = row[3]
             newUser["batteryPercentage"] = row[4]
-            newUser["name"] = row[5]
+            newUser["username"] = row[5]
             userinfo.append(newUser)
 
          #close the database connection
