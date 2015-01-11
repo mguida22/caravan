@@ -199,11 +199,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     
                     annotations.title = newUser.username
                     
-                    println(newUser.username)
-                    println(newUser.id)
+                    self.myMap.addAnnotation(annotations)
                     
                     self.myMap.addAnnotation(annotations)
-                    /*
+
                     if(self.annotations[newUser.id] == nil) {
                         
                         self.annotations[newUser.id] = MKPointAnnotation()
@@ -215,8 +214,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     //update the lat/long of the mainAnnotation (now with fancy animation)
                     UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut | .AllowUserInteraction,
                         animations: {
-                            annotations[newUser.id].coordinate.latitude = self.myMap.userLocation.coordinate.latitude
-                            annotations[newUser.id].coordinate.longitude = self.myMap.userLocation.coordinate.longitude
+                            self.annotations[newUser.id]!.coordinate.latitude = latitude!
+                            self.annotations[newUser.id]!.coordinate.longitude = longitude!
                         }, completion: { finished in})
                     
                 }
