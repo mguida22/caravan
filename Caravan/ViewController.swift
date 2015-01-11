@@ -207,7 +207,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                         
                         self.annotations[newUser.id] = MKPointAnnotation()
                         self.myMap.addAnnotation(self.annotations[newUser.id])
-                        self.annotations[newUser.id].title = newUser.username
+                        self.annotations[newUser.id]!.title = newUser.username
                         
                     }
                     
