@@ -23,7 +23,6 @@ class SettingsViewController: UIViewController, MKMapViewDelegate, CLLocationMan
             var userText : String? = searchBar.text
         }
         
-         searchBar.barTintColor = UIColor.blackColor()
         // Do any additional setup after loading the view.
 }
 
