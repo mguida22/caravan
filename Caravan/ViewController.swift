@@ -153,7 +153,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return myLineRenderer
     }
     
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+   /* func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
         if (annotation is MKUserLocation) {
             //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
@@ -174,7 +174,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         return pinView
         
-    }
+    }*/
 
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
         
