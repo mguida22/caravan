@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class SettingsViewController: UIViewController{
+
+class SettingsViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
 
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -18,16 +21,9 @@ class SettingsViewController: UIViewController{
         
         super.viewDidLoad()
         
-        if searchBar.searchResultsButtonSelected == true {
-            let userSearch = searchBar.text
-        }
-        
-        
-        func geocodeAddressString("userSearch": String!, completionHandler completionHandler: CLGeocodeCompletionHandler!)
-
         // Do any additional setup after loading the view.
-    }
-    
+}
+
     
 
     override func didReceiveMemoryWarning() {
