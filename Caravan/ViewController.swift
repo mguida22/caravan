@@ -204,11 +204,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 //for each user
                 for(var i = 0; i < data!.count-1; i++) {
                     
-                   /* if(self.annotationList.count > 1){
-                        self.myMap.removeAnnotation(self.annotationList[1])
-                        self.annotationList.removeAtIndex(1)
-                    }*/
-                    
                     //set the data as a dictionary
                     let userDict = data![i] as [NSObject: AnyObject]!
                     
@@ -221,7 +216,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     
                     var newUser = user(id: userid, username: username, longitude: longitude!, latitude: latitude!, gasPercentage: gasPercentage!, batteryPercentage: batteryPercentage!)
                     
-                    var marker = CLLocationCoordinate2DMake(newUser.latitude, newUser.longitude)
 
                     if(self.annotations[newUser.id] === nil) {
                         
