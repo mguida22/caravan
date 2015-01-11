@@ -28,7 +28,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var myRoute : MKRoute?
     
     //create the main annotation
-    var Mainannotation = MKPointAnnotation()
     var addedMainannotation = false
     
     //list of annotations by userid and the annotiation
@@ -124,20 +123,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
         
-        //update the lat/long of the mainAnnotation (now with fancy animation)
-        UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut | .AllowUserInteraction,
-            animations: {
-                self.Mainannotation.coordinate.latitude = self.myMap.userLocation.coordinate.latitude
-                self.Mainannotation.coordinate.longitude = self.myMap.userLocation.coordinate.longitude
-            }, completion: { finished in})
-        
-        //if the Annotation is not of the map, add it
-        if(!addedMainannotation) {
-            addedMainannotation = true
-            myMap.addAnnotation(Mainannotation)
-            Mainannotation.title = "me"
-        }
-        
         //use the setusercords apiPoint
         Alamofire.request(.POST, apiEndpoint + "/setusercords",
             
@@ -194,18 +179,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     var newUser = user(id: userid, username: username, longitude: longitude!, latitude: latitude!, gasPercentage: gasPercentage!, batteryPercentage: batteryPercentage!)
                     
                     var marker = CLLocationCoordinate2DMake(newUser.latitude, newUser.longitude)
-                    
-                    var annotations = MKPointAnnotation()
-                    
-                    annotations.setCoordinate(marker)
-                    
-                    annotations.title = newUser.username
-                    
-                    self.myMap.addAnnotation(annotations)
-                    
-                    self.myMap.addAnnotation(annotations)
 
-                    if(self.annotations[newUser.id] == nil) {
+                    if(self.annotations[newUser.id] === nil) {
                         
                         self.annotations[newUser.id] = MKPointAnnotation()
                         self.myMap.addAnnotation(self.annotations[newUser.id])
