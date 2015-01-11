@@ -16,6 +16,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     let spanY = 0.015
     let spanX = 0.015
     
+    var annotationList: [MKPointAnnotation] = []
+    
     @IBOutlet weak var theMap: MKMapView!
     
     var manager:CLLocationManager!
@@ -35,6 +37,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         theMap.delegate = self
         theMap.mapType = MKMapType.Standard
         theMap.showsUserLocation = true
+        
     }
     
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
@@ -51,8 +54,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         var annotation = MKPointAnnotation()
         annotation.setCoordinate(offSet)
         annotation.title = "Bob"
-        
         theMap.addAnnotation(annotation)
+        
+        annotationList.append(annotation)
         
         var newRegion = MKCoordinateRegion(center: theMap.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
         theMap.setRegion(newRegion, animated: true)
