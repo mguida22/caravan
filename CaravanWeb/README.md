@@ -15,10 +15,10 @@ POST Request:
    "password" : password_var
 }
 ```
-Returns:
+Response:
 ```
 {
-"id" : new_user_id (or -1 if error)
+   "id" : new_user_id (or -1 if error)
 }
 ```
 
@@ -29,7 +29,7 @@ GET Request:
 ```
 /user/{id}
 ```
-Returns:
+Response:
 ```
 {
   "active": (1/0),
@@ -47,6 +47,21 @@ Returns:
   "timestamp": timestamp,
   "username": user_name
 }
+```
+
+Set User Coordinates
+---
+POST Request:
+```
+{
+   "logitude" : log_var,
+   "latitude" : lat_var,
+   "userid" : id_var
+}
+```
+Response:
+```
+true (or false depending on if it was updated)
 ```
 
 Table Layout (What you can get)
