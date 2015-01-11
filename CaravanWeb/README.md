@@ -166,6 +166,28 @@ Response:
 }
 ```
 
+Get Group Member Info (/getgroupinfo)
+---
+POST Request:
+```
+{
+   "groupid" : groupid_var,
+   "userid" : userid_var
+}
+```
+Response:
+```
+[
+   {
+      "longitude" : user_longitude,
+      "latitude" : user_latitude,
+      "userid" : user_id,
+      "gasPercentage" : user_gas_percentage,
+      "batteryPercentage" : user_battery_percentage,
+      "username" : user_username
+   }
+]
+
 Table Layout (What you can get)
 ===
 The format is the following

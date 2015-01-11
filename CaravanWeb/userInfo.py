@@ -11,8 +11,66 @@ urls = (
    "/joinusergroup", "joinUserGroup",
    "/changefinaldestination", "changeFinalDestination",
    "/adddestination", "addDestination",
-   "/getdestination", "getDestination"
+   "/getdestination", "getDestination",
+   "/getgroupinfo", "getGroupInfo"
 )
+
+class getGroupInfo:
+   def GET(self):
+      return "POST only"
+
+   def POST(self):
+
+      #set the return type
+      web.header('Content-Type', 'application/json')
+
+      #create the array to get the post data
+      postArray = web.input()
+
+      #if all data required is there
+      if "groupid" in postArray and "userid" in postArray:
+
+         #connect to the database
+         conn = pymysql.connect(host='127.0.0.1', user='caravan',
+            passwd='5RykXMGvyn', db='caravan')
+         cur = conn.cursor()
+
+         #get the long/lat data if there is some
+         cur.execute('''SELECT longitude, latitude, id, gasPercentage,
+            batteryPercentage, username FROM users
+            WHERE groupid = %s and id != %s''',
+            [postArray.groupid, postArray.userid])
+
+         #create blank list of users
+         userinfo = list()
+
+         #fetch the destination data
+         for row in cur:
+
+            #create blank dictinary
+            newUser = dict()
+
+            newUser["longitude"] = row[0]
+            newUser["latitude"] = row[1]
+            newUser["id"] = row[2]
+            newUser["gasPercentage"] = row[3]
+            newUser["batteryPercentage"] = row[4]
+            newUser["name"] = row[5]
+            userinfo.append(newUser)
+
+         #close the database connection
+         cur.close()
+         conn.close()
+
+         return json.dumps(userinfo, sort_keys=True, indent=2,
+            separators=(',', ': '))
+
+      else:
+
+         DestOutput = []
+
+         return json.dumps(DestOutput, sort_keys=True, indent=2,
+               separators=(',', ': '))
 
 class getDestination:
    def GET(self):
@@ -66,8 +124,8 @@ class getDestination:
          cur.close()
          conn.close()
 
-         return json.dumps(DestOutput,
-            sort_keys=True, indent=2, separators=(',', ': '))
+         return json.dumps(DestOutput, sort_keys=True,
+            indent=2, separators=(',', ': '))
 
       else:
 
