@@ -218,7 +218,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                             annotations[newUser.id].coordinate.latitude = self.myMap.userLocation.coordinate.latitude
                             annotations[newUser.id].coordinate.longitude = self.myMap.userLocation.coordinate.longitude
                         }, completion: { finished in})
-                    */
+                    
                 }
             }
         }
