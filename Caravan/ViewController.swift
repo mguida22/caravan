@@ -41,7 +41,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     //temp user id, need to add code to change this for new users
 
-    var tempUserId = 3
+    var tempUserId = 2
     var tempGroupId = 1
     
     //simple bool for testing
@@ -153,7 +153,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return myLineRenderer
     }
     
-   /* func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
         if (annotation is MKUserLocation) {
             //if annotation is not an MKPointAnnotation (eg. MKUserLocation),
@@ -174,7 +174,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         return pinView
         
-    }*/
+    }
 
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
         
@@ -210,7 +210,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         .responseJSON { (_, _, data, _) in
             
             //if the request was bad
-            if(data![0] === 0) {
+            if(data == nil || data![0] === 0) {
                 println("failed to get other users")
             } else {
                 
