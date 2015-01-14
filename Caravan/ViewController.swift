@@ -252,10 +252,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 }
             }
         }
-        
+        //Follow user or not follow user based off of their input
         if isTracking {
-            var newRegion = MKCoordinateRegion(center: myMap.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
-            myMap.setRegion(newRegion, animated: true)
+            self.myMap.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true);
+        } else {
+            self.myMap.setUserTrackingMode(MKUserTrackingMode.None, animated: true)
         }
         
         ////start navigation
