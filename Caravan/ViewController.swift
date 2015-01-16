@@ -13,8 +13,10 @@ import Alamofire
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
-    let spanY = 0.015
-    let spanX = 0.015
+    let spanY = 0.01
+    let spanX = 0.01
+    
+    var userPreviousCoordinate : CLLocationCoordinate2D?
     
     struct user {
         var id:Int
@@ -121,6 +123,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         //Setup origin and destination for navigation
         var userLat = myMap.userLocation.coordinate.latitude
         var userLong = myMap.userLocation.coordinate.longitude
+        
+        userPreviousCoordinate = myMap.userLocation.coordinate
+        
         //let userLat = 37.331797
         //let userLong = -122.029604
         origin.coordinate = CLLocationCoordinate2DMake(userLat, userLong)
@@ -148,11 +153,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         
         var myLineRenderer = MKPolylineRenderer(polyline: myRoute?.polyline!)
-        myLineRenderer.strokeColor = UIColor.blueColor()
+        myLineRenderer.strokeColor = UIColor.greenColor()
         myLineRenderer.lineWidth = 3
         return myLineRenderer
     }
-    
+    /*
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         
         if (annotation is MKUserLocation) {
@@ -175,6 +180,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         return pinView
         
     }
+    */
 
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
         
@@ -243,17 +249,30 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                         animations: {
                             self.annotations[newUser.id]!.coordinate.latitude = latitude!
                             self.annotations[newUser.id]!.coordinate.longitude = longitude!
-                            
-                            
-                            
-                            
                         }, completion: { finished in})
                     
                 }
             }
         }
+        
+       
+        //TODO-MG: smooth out camera following the user based on course
+        
         //Follow user or not follow user based off of their input
         if isTracking {
+            //userPreviousCoordinate = CLLocationCoordinate2DMake(37.335329, -122.032061)
+            
+            //println("Longitude: ", myMap.userLocation.coordinate.longitude)
+            //println("Latitude: ", myMap.userLocation.coordinate.latitude)
+            
+            //var newRegion = MKCoordinateRegion(center: myMap.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
+            //myMap.setRegion(newRegion, animated: true)
+            
+            //var newCamera = MKMapCamera(lookingAtCenterCoordinate: myMap.userLocation.coordinate, fromEyeCoordinate: userPreviousCoordinate!, eyeAltitude: 50.0)
+            //myMap.setCamera(newCamera, animated: true)
+            
+            //userPreviousCoordinate = myMap.userLocation.coordinate
+            
             self.myMap.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true);
         } else {
             self.myMap.setUserTrackingMode(MKUserTrackingMode.None, animated: true)
