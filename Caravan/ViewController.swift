@@ -16,6 +16,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     let spanY = 0.01
     let spanX = 0.01
     
+    var searchInput = "food"
+    
     //var userPreviousCoordinate : CLLocationCoordinate2D?
     
     struct user {
@@ -78,7 +80,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         matchingItems.removeAll()
         let request = MKLocalSearchRequest()
-        request.naturalLanguageQuery = "food"
+        request.naturalLanguageQuery = searchInput
         request.region = myMap.region
 
         let search = MKLocalSearch(request: request)

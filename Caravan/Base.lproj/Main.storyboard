@@ -152,6 +152,9 @@
                             <constraint firstAttribute="trailing" secondItem="OoV-m2-lhD" secondAttribute="trailing" id="yfv-5g-kDb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchInput" destination="OoV-m2-lhD" id="Jpd-cI-5Rh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uae-i1-E9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7q0-we-md7" userLabel="Exit" sceneMemberID="exit"/>
