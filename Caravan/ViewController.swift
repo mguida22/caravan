@@ -16,7 +16,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     let spanY = 0.01
     let spanX = 0.01
     
-    var userPreviousCoordinate : CLLocationCoordinate2D?
+    //var userPreviousCoordinate : CLLocationCoordinate2D?
     
     struct user {
         var id:Int
@@ -124,7 +124,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         var userLat = myMap.userLocation.coordinate.latitude
         var userLong = myMap.userLocation.coordinate.longitude
         
-        userPreviousCoordinate = myMap.userLocation.coordinate
+        //userPreviousCoordinate = myMap.userLocation.coordinate
         
         //let userLat = 37.331797
         //let userLong = -122.029604
@@ -256,22 +256,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         
        
-        //TODO-MG: smooth out camera following the user based on course
         
         //Follow user or not follow user based off of their input
         if isTracking {
-            //userPreviousCoordinate = CLLocationCoordinate2DMake(37.335329, -122.032061)
             
-            //println("Longitude: ", myMap.userLocation.coordinate.longitude)
-            //println("Latitude: ", myMap.userLocation.coordinate.latitude)
+            /*
+            //TODO-MG: fix following of the users direction to orient map properly
+
+            userPreviousCoordinate = CLLocationCoordinate2DMake(37.335329, -122.032061)
             
-            //var newRegion = MKCoordinateRegion(center: myMap.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
-            //myMap.setRegion(newRegion, animated: true)
+            println("Longitude: ", myMap.userLocation.coordinate.longitude)
+            println("Latitude: ", myMap.userLocation.coordinate.latitude)
             
-            //var newCamera = MKMapCamera(lookingAtCenterCoordinate: myMap.userLocation.coordinate, fromEyeCoordinate: userPreviousCoordinate!, eyeAltitude: 50.0)
-            //myMap.setCamera(newCamera, animated: true)
+            var newRegion = MKCoordinateRegion(center: myMap.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
+            self.myMap.setRegion(newRegion, animated: true)
             
-            //userPreviousCoordinate = myMap.userLocation.coordinate
+            var newCamera = MKMapCamera(lookingAtCenterCoordinate: myMap.userLocation.coordinate, fromEyeCoordinate: userPreviousCoordinate!, eyeAltitude: 50.0)
+            self.myMap.setCamera(newCamera, animated: true)
+            
+            userPreviousCoordinate = myMap.userLocation.coordinate
+            */
             
             self.myMap.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true);
         } else {
